@@ -18,7 +18,7 @@ public class LoginConfirmation {
     }
 
     private boolean checkLogin(String login) {
-        return getUserByName(login) == null;
+        return getUserByName(login) != null;
     }
 
     private boolean checkPwd(String pwd) {

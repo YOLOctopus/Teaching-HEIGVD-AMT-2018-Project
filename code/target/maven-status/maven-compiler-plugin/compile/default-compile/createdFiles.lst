@@ -1,0 +1,6 @@
+ch/heigvd/gamification/presentation/RegistrationServlet.class
+ch/heigvd/gamification/presentation/LoginConfirmationServlet.class
+ch/heigvd/gamification/business/LoginConfirmation.class
+ch/heigvd/gamification/presentation/LoginServlet.class
+ch/heigvd/gamification/model/User.class
+ch/heigvd/gamification/presentation/RegistrationConfirmationServlet.class
