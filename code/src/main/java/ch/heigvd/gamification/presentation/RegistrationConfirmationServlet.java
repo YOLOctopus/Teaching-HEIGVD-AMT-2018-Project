@@ -1,5 +1,8 @@
 package ch.heigvd.gamification.presentation;
 
+import ch.heigvd.gamification.business.RegisterConfirmation;
+
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,24 +13,40 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "RegistrationConfirmationServlet")
 public class RegistrationConfirmationServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private RegisterConfirmation registerConfirmation;
 
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        registerConfirmation = new RegisterConfirmation();
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String firstName = request.getParameter("firstname");
+        String lastName = request.getParameter("lastname");
+        String email = request.getParameter("email");
+        String password = request.getParameter("pwd");
+        PrintWriter writer = response.getWriter();
+
+        if (registerConfirmation.validEmail(email) && registerConfirmation.validPassword(password)) {
+            writer.println(
+                    "<html>" +
+                        "<h3>Registration successful</h3>" +
+                        "<p>Name : " + firstName + " " + lastName + "</p>" +
+                        "<p>Email: " + email + "</p>" +
+                        "<p><a href='./index.jsp'>Back</a></p>" +
+                    "</html>");
+            // TODO: insert user in database
+        } else {
+            writer.println(
+                    "<html>" +
+                        "<h3>Email or password invalid</h3>" +
+                        "<p><a href='./register'>Back</a></p>" +
+                    "</html>");
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String appName = request.getParameter("appname");
-        String username = request.getParameter("usrname");
-        String password = request.getParameter("pwd");
-        String email = request.getParameter("email");
 
-        PrintWriter writer = response.getWriter();
-
-        writer.println(
-                "<html>" +
-                    "<p>" + appName + "</p>" +
-                    "<p>" + username + "</p>" +
-                    "<p>" + password + "</p>" +
-                    "<p>" + email + "</p>" +
-                "</html>");
     }
 }

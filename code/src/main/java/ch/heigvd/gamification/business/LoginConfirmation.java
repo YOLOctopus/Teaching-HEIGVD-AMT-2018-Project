@@ -1,6 +1,5 @@
 package ch.heigvd.gamification.business;
 
-
 import ch.heigvd.gamification.model.User;
 
 public class LoginConfirmation {
@@ -9,32 +8,22 @@ public class LoginConfirmation {
 
     public LoginConfirmation() {
         users = new User[10];
-        users[0] = new User("Sam", "123", "sam@gmail.com");
-        users[1] = new User("admin", "123", "admin@gmail.com");
+        users[0] = new User("Sam", "May", "sam@gmail.com", "1234");
+        users[1] = new User("admin", "admin", "admin@gmail.com", "1234");
     }
 
-    public boolean confirm(String login, String password, String email) {
-        return checkLogin(login) && checkPwd(password) && checkEmail(email);
+    public boolean confirm(String email, String password) {
+        return  checkEmail(email) && checkPwd(email, password);
     }
 
-    private boolean checkLogin(String login) {
-        return getUserByName(login) != null;
-    }
 
-    private boolean checkPwd(String pwd) {
-        return (!pwd.equals("") && !pwd.contains(" "));
+    private boolean checkPwd(String email, String pwd) {
+        User user = getUserByEmail(email);
+        return (pwd.equals(user.getPassword()));
     }
 
     private boolean checkEmail(String email) {
-        return email.contains("@") && getUserByEmail(email) == null;
-    }
-
-    private User getUserByName(String name) {
-        for (User user : users) {
-            if (user.getName().toLowerCase().equals(name.toLowerCase()))
-                return user;
-        }
-        return null;
+        return email.contains("@") && getUserByEmail(email) != null;
     }
 
     private User getUserByEmail(String email) {

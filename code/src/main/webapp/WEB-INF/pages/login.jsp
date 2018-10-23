@@ -1,24 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: samuel
-  Date: 10/18/18
-  Time: 10:52 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Log in</title>
-</head>
-<body>
+<%@include file="includes/header.jsp" %>
+
 <h2>Please log in :</h2>
-<form method="post" action="/confirmation">
-    <p>Application name : <input type="text" name="appname"/> <p/>
-    <p>Username : <input type="text" name="usrname"/> <p/>
+<form method="post" action="/loginconfirmation">
+    <p>Email : <input type="email" name="email"/> <p/>
     <p>Password : <input type="password" name="pwd"/> <p/>
-    <p>Email : <input type="password" name="email"/> <p/>
     <input type="submit" value="Log in">
 </form>
 
-</body>
-</html>
+<%@include file="includes/footer.jsp" %>

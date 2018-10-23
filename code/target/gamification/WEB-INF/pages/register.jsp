@@ -1,24 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: samuel
-  Date: 10/18/18
-  Time: 10:07 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Registration</title>
-</head>
-<body>
+<%@include file="includes/header.jsp" %>
+
 <h2>Fill in the form bellow :</h2>
-<form method="post" action="RegistrationConfirmationServlet">
-    <p>Application name : <input type="text" name="appname"/> <p/>
-    <p>Username : <input type="text" name="usrname"/> <p/>
+<form method="post" action="./registerconfirmation">
+    <p>First name : <input type="text" name="firstname"/> <p/>
+    <p>Last name : <input type="text" name="lastname"/> <p/>
+    <p>Email : <input type="email" name="email"/> <p/>
     <p>Password : <input type="password" name="pwd"/> <p/>
-    <p>Email : <input type="password" name="email"/> <p/>
-    <input type="submit" value="Log in">
+    <input type="submit" value="Register">
 </form>
 
-</body>
-</html>
+<%@include file="includes/footer.jsp" %>

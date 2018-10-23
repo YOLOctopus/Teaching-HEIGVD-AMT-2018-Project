@@ -1,5 +1,2 @@
-<html>
-<body>
-    <a href="./register">Log in</a>
-</body>
-</html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:redirect url="/pages/home"/>
