@@ -2,7 +2,7 @@ FROM payara/server-full:5.183
 
 MAINTAINER YOLOctopus <https://github.com/YOLOctopus>
 
-COPY ../../code/target/gamification.war $DEPLOY_DIR
+COPY gamification.war $DEPLOY_DIR
 
 ADD drivers/mysql-connector-java-5.1.39-bin.jar /glassfish4/glassfish/lib/
 
