@@ -1,7 +1,6 @@
 package ch.heigvd.gamification.presentation;
 
 import ch.heigvd.gamification.business.LoginConfirmation;
-import ch.heigvd.gamification.business.RegisterConfirmation;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "LoginConfirmationServlet")
 public class LoginConfirmationServlet extends HttpServlet {
@@ -27,9 +25,11 @@ public class LoginConfirmationServlet extends HttpServlet {
         String password = request.getParameter("pwd");
 
         if (loginConfirmation.confirm(email, password)) {
-            response.sendRedirect("/pages/home?success=true");
+            request.setAttribute("success", "true");
+            request.getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(request, response);
         } else {
-            response.sendRedirect("/pages/login?success=false");
+            request.setAttribute("success", "false");
+            request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
         }
     }
 

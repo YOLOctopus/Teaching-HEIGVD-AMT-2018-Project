@@ -1,7 +1,7 @@
 <%@include file="includes/header.jsp" %>
 
 <h2>Fill in the form bellow :</h2>
-<form method="post" action="./registerconfirmation">
+<form method="post" action="./pages/registerconfirmation">
     <p>First name : <input type="text" name="firstname"/> <p/>
     <p>Last name : <input type="text" name="lastname"/> <p/>
     <p>Email : <input type="email" name="email"/> <p/>

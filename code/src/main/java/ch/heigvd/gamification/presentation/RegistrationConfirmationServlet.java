@@ -34,14 +34,13 @@ public class RegistrationConfirmationServlet extends HttpServlet {
                         "<h3>Registration successful</h3>" +
                         "<p>Name : " + firstName + " " + lastName + "</p>" +
                         "<p>Email: " + email + "</p>" +
-                        "<p><a href='./index.jsp'>Back</a></p>" +
+                        "<p><a href='./home'>Back</a></p>" +
                     "</html>");
-            // TODO: insert user in database
         } else {
             writer.println(
                     "<html>" +
                         "<h3>Email or password invalid</h3>" +
-                        "<p><a href='./register'>Back</a></p>" +
+                        "<p><a href='./pages/register'>Back</a></p>" +
                     "</html>");
         }
     }

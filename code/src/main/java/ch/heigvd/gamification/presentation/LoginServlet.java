@@ -14,7 +14,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String success = request.getParameter("success");
+        String success = (String)request.getAttribute("success");
         if (success != null && success.equals("false")) {
             response.getWriter().println("Wrong combination of email/password");
         }

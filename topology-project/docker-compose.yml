@@ -12,7 +12,7 @@ services:
       - ../code/target/gamification.war:/opt/payara/deployments/gamification.war
      
   db:
-    image: mysql
+    build: ../images/mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
