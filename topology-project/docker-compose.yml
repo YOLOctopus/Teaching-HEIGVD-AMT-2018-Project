@@ -8,8 +8,8 @@ services:
     ports:
       - "8080:8080"
       - "4848:4848"
-    volumes:
-      - ../code/target/gamification.war:/opt/payara/deployments/gamification.war
+    #volumes:
+    #  - ../code/target/gamification.war:/opt/payara/deployments/gamification.war
      
   db:
     build: ../images/mysql
@@ -18,7 +18,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ../db:/var/lib/mysql
+      - dbdata:/var/lib/mysql
     environment:
       MYSQL_DATABASE: amtdb
       MYSQL_ROOT_PASSWORD: root
@@ -30,3 +30,6 @@ services:
     restart: always
     ports:
      - 8888:80 
+
+volumes:
+  dbdata:
