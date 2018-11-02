@@ -14,15 +14,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <base href="${pageContext.request.contextPath}/">
         <title>${pageTitle}</title>
-        <link rel="stylesheet" href="static/css/styles.css" />
-        <link href="static/css/bootstrap.min.css" rel="stylesheet">
         <script src="static/js/jquery.min.js"></script>
         <script src="static/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="static/css/styles.css" />
     </head>
     <body>
-    <div class="container">
-        <div class="topMenu">
-            <div>logo</div>
-            <div>Gamification API</div>
-            <div><a href="./pages/login">Log in</a></div>
+        <div class="container-fluid">
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href="#">
+                    <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
+                    Gamification API
+                </a>
+            </nav>
         </div>
+        <div class="container">

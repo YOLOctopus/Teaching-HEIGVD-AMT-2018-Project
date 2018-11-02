@@ -22,22 +22,24 @@ public class RegistrationServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
+        String firstName = request.getParameter("firstname");
+        String lastName = request.getParameter("lastname");
         String email = request.getParameter("email");
         String pwd = request.getParameter("pwd");
 
         ArrayList<String> errors = new ArrayList<>();
 
-        if (!registerConfirmation.validEmail(email)) {
+        if (firstName.length() == 0)
+            errors.add("Please input your first name");
+        if (lastName.length() == 0)
+            errors.add("Please input your last name");
+        if (!registerConfirmation.validEmail(email))
             errors.add("Invalid email");
-        }
-        if (!registerConfirmation.validPassword(pwd)) {
+        if (!registerConfirmation.validPassword(pwd))
             errors.add("invalid password");
-        }
 
         // test fields
-        if () {
+        if (errors.isEmpty()) {
             // Call DAO manager to insert user in DB
 
             // Define session / set user as connected
