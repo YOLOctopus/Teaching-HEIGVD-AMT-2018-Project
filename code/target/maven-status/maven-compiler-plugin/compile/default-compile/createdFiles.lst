@@ -1,10 +1,8 @@
 ch/heigvd/gamification/model/Application.class
 ch/heigvd/gamification/presentation/LoginServlet.class
-ch/heigvd/gamification/presentation/RegistrationConfirmationServlet.class
 ch/heigvd/gamification/model/User.class
 ch/heigvd/gamification/presentation/ProfileServlet.class
 ch/heigvd/gamification/presentation/RegistrationServlet.class
 ch/heigvd/gamification/presentation/HomeServlet.class
-ch/heigvd/gamification/presentation/LoginConfirmationServlet.class
 ch/heigvd/gamification/business/LoginConfirmation.class
 ch/heigvd/gamification/business/RegisterConfirmation.class

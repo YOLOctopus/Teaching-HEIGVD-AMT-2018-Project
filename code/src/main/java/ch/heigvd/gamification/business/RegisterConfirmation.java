@@ -18,6 +18,6 @@ public class RegisterConfirmation {
      * @return wether password is valid or not
      */
     public boolean validPassword(String password) {
-        return true;
+        return password.length() >= 7;
     }
 }

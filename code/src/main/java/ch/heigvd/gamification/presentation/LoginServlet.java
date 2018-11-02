@@ -1,5 +1,8 @@
 package ch.heigvd.gamification.presentation;
 
+import ch.heigvd.gamification.business.LoginConfirmation;
+
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,15 +12,26 @@ import java.io.IOException;
 
 @WebServlet(name = "LoginServlet")
 public class LoginServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    LoginConfirmation loginConfirmation;
 
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        loginConfirmation = new LoginConfirmation();
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String pwd = request.getParameter("pwd");
+
+        if (loginConfirmation.confirm(email, pwd)) {
+            request.getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String success = (String)request.getAttribute("success");
-        if (success != null && success.equals("false")) {
-            response.getWriter().println("Wrong combination of email/password");
-        }
         request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
     }
 }

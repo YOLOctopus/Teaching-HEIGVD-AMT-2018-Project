@@ -14,11 +14,6 @@ public class HomeServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("pageTitle", "Gamification API");
-        String success = (String)request.getAttribute("success");
-        if (success != null && success.equals("true")) {
-            response.getWriter().println("You are logged in");
-        }
         request.getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(request, response);
     }
 }

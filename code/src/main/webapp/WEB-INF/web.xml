@@ -9,16 +9,8 @@
         <servlet-class>ch.heigvd.gamification.presentation.LoginServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LoginConfirmationServlet</servlet-name>
-        <servlet-class>ch.heigvd.gamification.presentation.LoginConfirmationServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>RegistrationServlet</servlet-name>
         <servlet-class>ch.heigvd.gamification.presentation.RegistrationServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>RegistrationConfirmationServlet</servlet-name>
-        <servlet-class>ch.heigvd.gamification.presentation.RegistrationConfirmationServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>HomeServlet</servlet-name>
@@ -33,16 +25,8 @@
         <url-pattern>/pages/login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>LoginConfirmationServlet</servlet-name>
-        <url-pattern>/pages/loginconfirmation</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>RegistrationServlet</servlet-name>
         <url-pattern>/pages/register</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>RegistrationConfirmationServlet</servlet-name>
-        <url-pattern>/pages/registerconfirmation</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
