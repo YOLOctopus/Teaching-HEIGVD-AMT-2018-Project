@@ -1,0 +1,1 @@
+echo 'create-jdbc-connection-pool --datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlDataSource --restype javax.sql.DataSource --property user=root:password=root:url=jdbc\:mysql\://localhost\:3306/amtdb:useSSL=false mypool ' >> mycommands.asadmin && echo 'create-jdbc-resource --connectionpoolid mypool jdbc/myressource ' >> mycommands.asadmin
