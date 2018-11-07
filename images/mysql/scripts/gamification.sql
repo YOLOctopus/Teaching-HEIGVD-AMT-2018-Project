@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `applications`;
 CREATE TABLE IF NOT EXISTS `applications` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` long(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(80) COLLATE utf8_bin NOT NULL,
   `description` varchar(2000) COLLATE utf8_bin NOT NULL,
   `APIKey` varchar(80) COLLATE utf8_bin NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `applications` (
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` long(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(30) COLLATE utf8_bin NOT NULL,
   `lastName` varchar(30) COLLATE utf8_bin NOT NULL,
   `email` varchar(60) COLLATE utf8_bin NOT NULL,

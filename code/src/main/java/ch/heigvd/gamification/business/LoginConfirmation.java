@@ -7,9 +7,6 @@ public class LoginConfirmation {
     User[] users;
 
     public LoginConfirmation() {
-        users = new User[10];
-        users[0] = new User("Sam", "May", "sam@gmail.com", "1234");
-        users[1] = new User("admin", "admin", "admin@gmail.com", "1234");
     }
 
     public boolean confirm(String email, String password) {

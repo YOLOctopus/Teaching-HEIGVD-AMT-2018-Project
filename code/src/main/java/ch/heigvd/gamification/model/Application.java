@@ -1,10 +1,36 @@
 package ch.heigvd.gamification.model;
 
-public class Application {
+import javax.persistence.*;
+
+@Entity
+@NamedQueries({
+        @NamedQuery(name = "Application.findByName", query = "SELECT a FROM Application a WHERE a.name = :name"),
+        @NamedQuery(name = "Application.findById", query = "SELECT a FROM Application a WHERE a.id = :id")
+})
+
+public class Application extends AbstractDomainModelEntity<Long> {
+    @Column(nullable = false, unique = true)
     private String name;
+
+    @Column
     private String description;
+
+    @Column(nullable = false, unique = true)
     private String apiKey;
+
+    @Column(nullable = false, unique = true)
     private String apiSecret;
+
+    @ManyToOne
+    private User user;
+
+    public Application() {
+    }
+
+    public Application(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 
     public String getName() {
         return name;
@@ -36,5 +62,13 @@ public class Application {
 
     public void setApiSecret(String apiSecret) {
         this.apiSecret = apiSecret;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

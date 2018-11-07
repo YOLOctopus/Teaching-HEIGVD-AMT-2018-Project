@@ -1,7 +1,9 @@
 package ch.heigvd.gamification.presentation;
 
 import ch.heigvd.gamification.business.RegisterConfirmation;
+import ch.heigvd.gamification.dao.UsersManager;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +15,10 @@ import java.util.ArrayList;
 
 @WebServlet(name = "RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
-    RegisterConfirmation registerConfirmation;
+    @EJB
+    private UsersManager usersManager;
+
+    private RegisterConfirmation registerConfirmation;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -47,6 +52,9 @@ public class RegistrationServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(request, response);
         } else {
             request.setAttribute("errors", errors);
+            request.setAttribute("firstName", firstName);
+            request.setAttribute("lastName", lastName);
+            request.setAttribute("email", email);
             request.getRequestDispatcher("/WEB-INF/pages/register.jsp").forward(request, response);
         }
     }

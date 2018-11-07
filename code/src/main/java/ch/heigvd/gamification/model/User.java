@@ -1,18 +1,43 @@
 package ch.heigvd.gamification.model;
 
-public class User {
+import javax.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
+
+@Entity
+@NamedQueries({
+        @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
+        @NamedQuery(name = "User.findAllActiveUsers", query = "SELECT u FROM User u WHERE u.active = true")
+})
+
+public class User extends AbstractDomainModelEntity<Long> {
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     private boolean active;
 
-    public User(String firstName, String lastName, String email, String password) {
+    @OneToMany(mappedBy = "user")
+    private List<Application> applications = new LinkedList<>();
+
+    public User() {}
+
+    public User(Long id, String firstName, String lastName, String email, String password, Boolean active) {
+        setId(id);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        active = true;
+        this.active = active;
     }
 
     public String getFirstName() {
@@ -53,5 +78,13 @@ public class User {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public List<Application> getApplications() {
+        return applications;
+    }
+
+    public void addApplication(Application application) {
+        applications.add(application);
     }
 }

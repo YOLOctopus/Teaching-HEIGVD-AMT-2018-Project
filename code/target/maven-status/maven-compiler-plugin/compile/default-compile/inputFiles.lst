@@ -1,8 +1,11 @@
+/home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/dao/UsersManager.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/model/User.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/business/RegisterConfirmation.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/presentation/RegistrationServlet.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/presentation/HomeServlet.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/model/Application.java
+/home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/dao/UsersManagerLocal.java
+/home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/model/AbstractDomainModelEntity.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/business/LoginConfirmation.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/presentation/LoginServlet.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/presentation/ProfileServlet.java

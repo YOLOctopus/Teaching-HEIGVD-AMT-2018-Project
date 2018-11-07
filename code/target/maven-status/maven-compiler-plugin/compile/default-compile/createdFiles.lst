@@ -4,5 +4,6 @@ ch/heigvd/gamification/model/User.class
 ch/heigvd/gamification/presentation/ProfileServlet.class
 ch/heigvd/gamification/presentation/RegistrationServlet.class
 ch/heigvd/gamification/presentation/HomeServlet.class
+ch/heigvd/gamification/model/AbstractDomainModelEntity.class
 ch/heigvd/gamification/business/LoginConfirmation.class
 ch/heigvd/gamification/business/RegisterConfirmation.class
