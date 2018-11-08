@@ -1,33 +1,42 @@
 package ch.heigvd.gamification.presentation;
 
 import ch.heigvd.gamification.business.LoginConfirmation;
+import ch.heigvd.gamification.dao.BusinessDomainEntityNotFoundException;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "LoginServlet")
 public class LoginServlet extends HttpServlet {
+    @EJB
     LoginConfirmation loginConfirmation;
-
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        loginConfirmation = new LoginConfirmation();
-    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String pwd = request.getParameter("pwd");
+        Boolean admin;
 
-        if (loginConfirmation.confirm(email, pwd)) {
-            request.getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
+        try {
+            if (admin = loginConfirmation.confirm(email, pwd)) {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", email);
+                session.setAttribute("admin", loginConfirmation.isAdmin(email));
+                session.setMaxInactiveInterval(30*60);
+                Cookie loginCookie = new Cookie("user", email);
+                loginCookie.setMaxAge(30*60);
+                response.addCookie(loginCookie);
+                String encodedURL = response.encodeRedirectURL("home");
+                response.sendRedirect(encodedURL);
+            } else {
+                request.setAttribute("error", "Wrong login or password");
+                request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
+            }
+        } catch (BusinessDomainEntityNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

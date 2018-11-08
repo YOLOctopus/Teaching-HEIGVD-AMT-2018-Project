@@ -20,7 +20,7 @@ import javax.persistence.MappedSuperclass;
  * @author Olivier Liechti
  */
 @MappedSuperclass
-public abstract class AbstractDomainModelEntity<PK> implements Serializable {
+public abstract class AbstractDomainModelEntity<PK extends Serializable> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

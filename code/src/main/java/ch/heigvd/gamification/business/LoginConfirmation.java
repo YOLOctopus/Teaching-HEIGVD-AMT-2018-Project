@@ -1,33 +1,36 @@
 package ch.heigvd.gamification.business;
 
+import ch.heigvd.gamification.dao.BusinessDomainEntityNotFoundException;
+import ch.heigvd.gamification.dao.UsersManagerLocal;
 import ch.heigvd.gamification.model.User;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+
+@Stateless
 public class LoginConfirmation {
 
-    User[] users;
+    @EJB
+    UsersManagerLocal usersManager;
 
     public LoginConfirmation() {
     }
 
-    public boolean confirm(String email, String password) {
-        return  checkEmail(email) && checkPwd(email, password);
+    public Boolean confirm(String email, String password) throws BusinessDomainEntityNotFoundException {
+        return checkEmail(email) && checkPwd(email, password);
     }
 
-
-    private boolean checkPwd(String email, String pwd) {
-        User user = getUserByEmail(email);
-        return (pwd.equals(user.getPassword()));
+    public Boolean isAdmin(String email) {
+        User user = usersManager.findByEmail(email);
+        return user.isAdmin();
     }
 
-    private boolean checkEmail(String email) {
-        return email.contains("@") && getUserByEmail(email) != null;
+    private boolean checkPwd(String email, String pwd) throws BusinessDomainEntityNotFoundException {
+        User user = usersManager.findByEmail(email);
+        return user != null && pwd.equals(user.getPassword());
     }
 
-    private User getUserByEmail(String email) {
-        for (User user : users) {
-            if (user.getEmail().toLowerCase().equals(email.toLowerCase()))
-                return user;
-        }
-        return null;
+    private boolean checkEmail(String email) throws BusinessDomainEntityNotFoundException {
+        return email.contains("@") && usersManager.findByEmail(email) != null;
     }
 }

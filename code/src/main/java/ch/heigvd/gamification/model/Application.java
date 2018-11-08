@@ -4,10 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Application.findByName", query = "SELECT a FROM Application a WHERE a.name = :name"),
-        @NamedQuery(name = "Application.findById", query = "SELECT a FROM Application a WHERE a.id = :id")
+        @NamedQuery(name = "Application.findByUser", query = "SELECT a FROM Application a WHERE a.user = :user"),
 })
-
 public class Application extends AbstractDomainModelEntity<Long> {
     @Column(nullable = false, unique = true)
     private String name;
