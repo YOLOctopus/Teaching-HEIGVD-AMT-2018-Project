@@ -13,7 +13,7 @@ import java.io.IOException;
 @WebServlet(name = "HomeServlet")
 public class HomeServlet extends HttpServlet {
     @EJB
-    private UsersManagerLocal usersManager;
+    UsersManagerLocal usersManager;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

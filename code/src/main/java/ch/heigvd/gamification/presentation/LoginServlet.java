@@ -18,17 +18,13 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String pwd = request.getParameter("pwd");
-        Boolean admin;
 
         try {
-            if (admin = loginConfirmation.confirm(email, pwd)) {
+            if (loginConfirmation.confirm(email, pwd)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", email);
                 session.setAttribute("admin", loginConfirmation.isAdmin(email));
                 session.setMaxInactiveInterval(30*60);
-                Cookie loginCookie = new Cookie("user", email);
-                loginCookie.setMaxAge(30*60);
-                response.addCookie(loginCookie);
                 String encodedURL = response.encodeRedirectURL("home");
                 response.sendRedirect(encodedURL);
             } else {

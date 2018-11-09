@@ -9,4 +9,5 @@ import java.util.List;
 @Local
 public interface ApplicationsManagerLocal extends IGenericDAO<Application, Long> {
     List<Application> findByUser(User user);
+    List<Application> findByUserByPage(User user, int pageSize, int pageIndex);
 }

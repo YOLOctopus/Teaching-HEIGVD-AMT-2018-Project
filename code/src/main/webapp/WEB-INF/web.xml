@@ -20,6 +20,18 @@
         <servlet-name>ProfileServlet</servlet-name>
         <servlet-class>ch.heigvd.gamification.presentation.ProfileServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>ch.heigvd.gamification.presentation.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UsersServlet</servlet-name>
+        <servlet-class>ch.heigvd.gamification.presentation.UsersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ApplicationsServlet</servlet-name>
+        <servlet-class>ch.heigvd.gamification.presentation.ApplicationsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/pages/login</url-pattern>
@@ -35,5 +47,17 @@
     <servlet-mapping>
         <servlet-name>ProfileServlet</servlet-name>
         <url-pattern>/pages/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/pages/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsersServlet</servlet-name>
+        <url-pattern>/pages/users</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApplicationsServlet</servlet-name>
+        <url-pattern>/pages/applications</url-pattern>
     </servlet-mapping>
 </web-app>

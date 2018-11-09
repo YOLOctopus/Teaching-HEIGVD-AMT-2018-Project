@@ -1,5 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="includes/header.jsp" %>
-
+<c:if test="${not empty error}">
+    <div class="alert alert-danger" role="alert">
+            ${error}
+    </div>
+</c:if>
 <h2>Please log in :</h2>
 <form method="post" action="./pages/login">
     <p>Email : <input type="email" name="email"/> <p/>

@@ -7,6 +7,7 @@ import java.util.List;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
+        @NamedQuery(name = "User.findByQuery", query = "SELECT u FROM User u WHERE u.firstName LIKE :query OR u.lastName LIKE :query OR u.email LIKE :query"),
 })
 public class User extends AbstractDomainModelEntity<Long> {
     @Column(nullable = false)

@@ -17,10 +17,10 @@ import java.util.ArrayList;
 @WebServlet(name = "RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
     @EJB
-    private UsersManagerLocal usersManager;
+    UsersManagerLocal usersManager;
 
     @EJB
-    private RegisterConfirmation registerConfirmation;
+    RegisterConfirmation registerConfirmation;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String firstName = request.getParameter("firstname");
@@ -46,7 +46,7 @@ public class RegistrationServlet extends HttpServlet {
         // test fields
         if (errors.isEmpty()) {
             // Call DAO manager to insert user in DB
-            usersManager.create(new User(firstName, lastName, email, pwd, true));
+            usersManager.create(new User(firstName, lastName, email, pwd, true, false));
             request.getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(request, response);
         } else {
             request.setAttribute("errors", errors);
