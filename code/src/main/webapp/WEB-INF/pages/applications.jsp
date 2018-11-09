@@ -4,6 +4,7 @@
 
 <form class="form-inline " method="get" action="pages/applications">
     <input name="query" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search">
+    <input type="hidden" name="user" value="${idUser}">
     <i class="fa fa-search" aria-hidden="true"></i>
 </form>
 
