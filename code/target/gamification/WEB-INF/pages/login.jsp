@@ -5,11 +5,17 @@
             ${error}
     </div>
 </c:if>
-<h2>Please log in :</h2>
+<h2>Login</h2>
 <form method="post" action="./pages/login">
-    <p>Email : <input type="email" name="email"/> <p/>
-    <p>Password : <input type="password" name="pwd"/> <p/>
-    <input type="submit" value="Log in">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password</label>
+        <input type="password" class="form-control" placeholder="Enter Password" name="pwd" id="pwd">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
 </form>
 
 <%@include file="includes/footer.jsp" %>

@@ -15,7 +15,7 @@
 
     <div class="dropdown d-inline float-right">
         <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Elements to display
+            Apps per page
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=5">5</a>
@@ -29,10 +29,14 @@
 <c:if test="${not empty applications}">
     <div class="list-group">
         <c:forEach items="${applications}" var="application">
-            <a href="pages/application?id=${application.getId()}" class="list-group-item list-group-item-action">
-                ${application.getName()} <br>
-                ${application.getDescription()}
-            </a>
+            <div class="list-group-item list-group-item-action">
+                <a href="pages/application?id=${application.getId()}">
+                    ${application.getName()}
+                </a>
+                <div>
+                    ${application.getDescription()}
+                </div>
+            </div>
         </c:forEach>
     </div>
 </c:if>
