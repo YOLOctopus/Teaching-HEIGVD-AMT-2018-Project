@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="static/css/styles.css" />
     </head>
     <body>
-        <div class="container-fluid">
+        <div>
             <nav class="navbar navbar-light bg-light">
                 <a class="navbar-brand" href="#">
                     <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -43,7 +43,6 @@
                         <a class="nav-item" href="pages/login">Log in</a>
                     </c:otherwise>
                 </c:choose>
-
             </nav>
         </div>
         <div class="container">
