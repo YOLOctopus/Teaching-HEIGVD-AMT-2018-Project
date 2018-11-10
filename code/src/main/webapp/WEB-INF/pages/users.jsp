@@ -4,11 +4,11 @@
 
 <div class="clearfix mb-2">
     <form class="form-inline d-inline float-left" method="get" action="pages/users">
-        <input name="query" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search">
+        <input name="query" class="form-control form-control-sm w-100" type="text" placeholder="Search" aria-label="Search">
         <i class="fa fa-search" aria-hidden="true"></i>
     </form>
 
-    <div class="dropdown ml-auto d-inline float-right">
+    <div class="dropdown d-inline float-right">
         <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Users per page
         </button>
@@ -26,7 +26,7 @@
         <c:forEach items="${users}" var="client">
             <div class="list-group-item list-group-item-action">
                 <div class="clearfix">
-                    <a class="d-inline float-left" href="pages/applications?user=${client.getId()}">
+                    <a class="list-title d-inline float-left" href="pages/applications?user=${client.getId()}">
                         <span>${client.getFirstName()} ${client.getLastName()}</span>
                     </a>
                     <form>
@@ -35,7 +35,9 @@
                         </div>
                     </form>
                 </div>
-                <span>${client.getEmail()}</span>
+                <div class="list-subtitle">
+                    ${client.getEmail()}
+                </div>
             </div>
         </c:forEach>
     </div>

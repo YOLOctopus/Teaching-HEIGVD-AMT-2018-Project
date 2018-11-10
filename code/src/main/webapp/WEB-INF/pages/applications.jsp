@@ -8,7 +8,7 @@
 
 <div class="clearfix mb-2">
     <form class="form-inline d-inline float-left" method="get" action="pages/applications">
-        <input name="query" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search">
+        <input name="query" class="form-control form-control-sm w-100" type="text" placeholder="Search" aria-label="Search">
         <input type="hidden" value="${idUser}" name="user">
         <i class="fa fa-search" aria-hidden="true"></i>
     </form>
@@ -24,17 +24,19 @@
             <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=50">50</a>
         </div>
     </div>
-</div
+</div>
 
 <c:if test="${not empty applications}">
     <div class="list-group">
         <c:forEach items="${applications}" var="application">
             <div class="list-group-item list-group-item-action">
-                <a href="pages/application?id=${application.getId()}">
-                    ${application.getName()}
-                </a>
                 <div>
-                    ${application.getDescription()}
+                    <a class="list-title" href="pages/application?id=${application.getId()}">
+                        <span>${application.getName()}</span>
+                    </a>
+                    <div class="list-subtitle">
+                        ${application.getDescription()}
+                    </div>
                 </div>
             </div>
         </c:forEach>
