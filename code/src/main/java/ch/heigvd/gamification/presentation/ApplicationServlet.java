@@ -36,8 +36,10 @@ public class ApplicationServlet extends HttpServlet {
         } catch (BusinessDomainEntityNotFoundException e) {
             e.printStackTrace();
         }
-        response.sendRedirect("./application?id=" + application.getId());
-
+        request.setAttribute("success", true);
+        request.setAttribute("id", application.getId());
+        request.setAttribute("application", application);
+        request.getRequestDispatcher("/WEB-INF/pages/application.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

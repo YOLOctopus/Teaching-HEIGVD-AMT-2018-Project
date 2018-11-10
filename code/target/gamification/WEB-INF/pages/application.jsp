@@ -1,5 +1,11 @@
 <%@include file="includes/header.jsp" %>
 
+<c:if test="${success}">
+    <div class="alert alert-success" role="alert">
+        Modifications saved
+    </div>
+</c:if>
+
 <form action="pages/application" method="post">
     <div class="form-group">
         <label for="appname">Application name</label>
@@ -7,7 +13,7 @@
     </div>
     <div class="form-group">
         <label for="appdesc">Description</label>
-        <textarea class="form-control" id="appdesc" rows="5" id="description">${application.getDescription()}</textarea>
+        <textarea class="form-control" id="appdesc" rows="5" name="description" id="description">${application.getDescription()}</textarea>
     </div>
     <div class="form-group">
         <label for="apikey">API Key</label>
