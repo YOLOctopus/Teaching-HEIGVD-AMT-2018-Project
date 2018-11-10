@@ -24,19 +24,19 @@
 <c:if test="${not empty users}">
     <div class="list-group">
         <c:forEach items="${users}" var="client">
-            <a href="pages/applications?user=${client.getId()}" class="list-group-item">
-                <div class="checkbox pull-left">
-                    <label>
-                        <input type="checkbox" value="">
-                    </label>
+            <div class="list-group-item list-group-item-action">
+                <div class="clearfix">
+                    <a class="d-inline float-left" href="pages/applications?user=${client.getId()}">
+                        <span>${client.getFirstName()} ${client.getLastName()}</span>
+                    </a>
+                    <form>
+                        <div class="form-check d-inline float-right">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        </div>
+                    </form>
                 </div>
-
-                <div class="pull-left form-control-inline">
-                    <h4 class="list-group-item-heading"> ${client.getFirstName()} ${client.getLastName()}</h4>
-                    <p class="list-group-item-text">${client.getEmail()}</p>
-                </div>
-                <div class="clearfix"></div>
-            </a>
+                <span>${client.getEmail()}</span>
+            </div>
         </c:forEach>
     </div>
 </c:if>

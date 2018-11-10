@@ -26,24 +26,46 @@
     </head>
     <body>
         <div>
-            <nav class="navbar navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">
                     <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
                     Gamification API
                 </a>
-                <c:choose>
-                    <c:when test="${user != null}">
-                        <c:if test="${admin}">
-                            <a class="nav-item ml-2" href="pages/users">Users</a>
-                        </c:if>
-                        <a class="nav-item ml-auto" href="pages/applications?user=${id}">Applications</a>
-                        <a class="nav-item ml-auto" href="pages/logout">Logout</a>
-                    </c:when>
-                    <c:otherwise>
-                        <a class="nav-item ml-auto mr-2" href="pages/register">Register</a>
-                        <a class="nav-item" href="pages/login">Log in</a>
-                    </c:otherwise>
-                </c:choose>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <c:choose>
+                        <c:when test="${user != null}">
+                            <ul class="navbar-nav">
+                                <c:if test="${admin}">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="pages/users">Users</a>
+                                    </li>
+                                </c:if>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="pages/applications?user=${id}">Applications</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="pages/logout">Logout</a>
+                                </li>
+                            </ul>
+                        </c:when>
+                        <c:otherwise>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="pages/register">Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="pages/login">Log in</a>
+                                </li>
+                            </ul>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
             </nav>
         </div>
         <div class="container">
