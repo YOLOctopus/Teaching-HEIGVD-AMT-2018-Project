@@ -6,6 +6,11 @@
     <c:redirect url="home.jsp"/>
 </c:if>
 
+<form action="pages/newapplication" method="post">
+    <input type="hidden" name="id" value="${idUser}">
+    <input type="submit" class="btn btn-primary mb-2" value="New application">
+</form>
+
 <div class="clearfix mb-2">
     <form class="form-inline d-inline float-left" method="get" action="pages/applications">
         <input name="query" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search">
