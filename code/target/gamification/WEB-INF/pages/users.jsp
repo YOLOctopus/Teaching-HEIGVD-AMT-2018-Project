@@ -3,13 +3,19 @@
 <%@include file="includes/header.jsp" %>
 
 <div class="clearfix mb-2">
+    <h1 class="d-inline mb-2">Users</h1>
+</div>
+
+<hr />
+
+<div class="clearfix mb-2">
     <form class="form-inline d-inline float-left" method="get" action="pages/users">
         <input name="query" class="form-control form-control-sm w-100" type="text" placeholder="Search" aria-label="Search">
         <i class="fa fa-search" aria-hidden="true"></i>
     </form>
 
     <div class="dropdown d-inline float-right">
-        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-outline-primary btn-sm btn-right-w dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Users per page
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

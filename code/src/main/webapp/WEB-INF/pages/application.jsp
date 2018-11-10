@@ -9,7 +9,7 @@
 <form action="pages/application" method="post">
     <div class="form-group">
         <label for="appname">Application name</label>
-        <input class="form-control" id="appname" type="text" value="${application.getName()}" name="name"><br/>
+        <input class="form-control" id="appname" type="text" value="${application.getName()}" name="name">
     </div>
     <div class="form-group">
         <label for="appdesc">Description</label>

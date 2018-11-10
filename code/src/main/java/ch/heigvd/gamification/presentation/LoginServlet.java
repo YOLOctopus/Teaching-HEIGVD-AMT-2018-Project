@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
                 String encodedURL = response.encodeRedirectURL("home");
                 response.sendRedirect(encodedURL);
             } else {
-                request.setAttribute("error", "Wrong login or password");
+                request.setAttribute("error", "Invalid login or password");
                 request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
             }
         } catch (BusinessDomainEntityNotFoundException e) {

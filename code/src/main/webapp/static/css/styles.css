@@ -18,3 +18,15 @@ h6{font-size: 10px;}
 .list-subtitle {
     font-size: 12px;
 }
+
+.navbar-brand > img {
+    vertical-align: center;
+}
+
+.navbar-brand > div {
+    vertical-align: middle;
+}
+
+.btn-right-w {
+    min-width: 130px;
+}

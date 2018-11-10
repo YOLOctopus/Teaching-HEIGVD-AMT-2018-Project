@@ -6,10 +6,15 @@
     <c:redirect url="home.jsp"/>
 </c:if>
 
-<form action="pages/newapplication" method="post">
-    <input type="hidden" name="id" value="${idUser}">
-    <input type="submit" class="btn btn-primary mb-2" value="New application">
-</form>
+<div class="clearfix mb-2">
+    <h1 class="d-inline">Applications</h1>
+    <form action="pages/newapplication" method="post" class="d-inline">
+        <input type="hidden" name="id" value="${idUser}">
+        <input type="submit" class="btn-sm btn-primary btn-right-w float-right" value="New app">
+    </form>
+</div>
+
+<hr />
 
 <div class="clearfix mb-2">
     <form class="form-inline d-inline float-left" method="get" action="pages/applications">
@@ -19,7 +24,7 @@
     </form>
 
     <div class="dropdown d-inline float-right">
-        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-outline-primary btn-sm btn-right-w dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Apps per page
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
