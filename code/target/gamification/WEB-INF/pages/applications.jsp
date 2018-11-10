@@ -9,6 +9,7 @@
 <div class="clearfix mb-2">
     <form class="form-inline d-inline float-left" method="get" action="pages/applications">
         <input name="query" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search">
+        <input type="hidden" value="${idUser}" name="user">
         <i class="fa fa-search" aria-hidden="true"></i>
     </form>
 
@@ -17,10 +18,10 @@
             Elements to display
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="pages/applications?pagesize=5">5</a>
-            <a class="dropdown-item" href="pages/applications?pagesize=10">10</a>
-            <a class="dropdown-item" href="pages/applications?pagesize=20">20</a>
-            <a class="dropdown-item" href="pages/applications?pagesize=50">50</a>
+            <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=5">5</a>
+            <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=10">10</a>
+            <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=20">20</a>
+            <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=50">50</a>
         </div>
     </div>
 </div
