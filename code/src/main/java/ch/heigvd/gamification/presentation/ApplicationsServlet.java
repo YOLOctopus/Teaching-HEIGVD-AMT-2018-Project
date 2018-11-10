@@ -28,7 +28,6 @@ public class ApplicationsServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        final int MAX_PAGINATION_PAGE = 10;
         Long idUser = Long.parseLong(request.getParameter("user"));
         User user = null;
         try {
@@ -36,27 +35,32 @@ public class ApplicationsServlet extends HttpServlet {
         } catch (BusinessDomainEntityNotFoundException e) {
             e.printStackTrace();
         }
-        int page = 0;
-        int pageSize = 5;
-        if (request.getParameterMap().containsKey("page")) {
-            page = Integer.parseInt(request.getParameter("page"));
-        }
-        if (request.getParameterMap().containsKey("pagesize")) {
-            pageSize = Integer.parseInt(request.getParameter("pagesize"));
-        }
+        List<Application> applications;
+        if(request.getParameterMap().containsKey("query")) {
+            applications = applicationsManager.findByQuery(user, "%" + request.getParameter("query") + "%");
+        } else {
+            final int MAX_PAGINATION_PAGE = 10;
+            int page = 0;
+            int pageSize = 5;
+            if (request.getParameterMap().containsKey("page")) {
+                page = Integer.parseInt(request.getParameter("page"));
+            }
+            if (request.getParameterMap().containsKey("pagesize")) {
+                pageSize = Integer.parseInt(request.getParameter("pagesize"));
+            }
 
-        Long totalSize = applicationsManager.count();
-        int minPage = Math.max(0, page - MAX_PAGINATION_PAGE/2);
-        int maxPage = (int)Math.min(page + MAX_PAGINATION_PAGE/2-1, totalSize/pageSize-1);
-
-        List<Application> applications = applicationsManager.findByUserByPage(user, pageSize, page);
-        request.setAttribute("applications", applications);
+            Long totalSize = applicationsManager.count();
+            int minPage = Math.max(0, page - MAX_PAGINATION_PAGE / 2);
+            int maxPage = (int) Math.min(page + MAX_PAGINATION_PAGE / 2 - 1, totalSize / pageSize - 1);
+            applications = applicationsManager.findByUserByPage(user, pageSize, page);
+            request.setAttribute("pageSize", pageSize);
+            request.setAttribute("page", page);
+            request.setAttribute("totalSize", totalSize);
+            request.setAttribute("minPage", minPage);
+            request.setAttribute("maxPage", maxPage);
+        }
         request.setAttribute("idUser", idUser);
-        request.setAttribute("pageSize", pageSize);
-        request.setAttribute("page", page);
-        request.setAttribute("totalSize", totalSize);
-        request.setAttribute("minPage", minPage);
-        request.setAttribute("maxPage", maxPage);
+        request.setAttribute("applications", applications);
         request.getRequestDispatcher("/WEB-INF/pages/applications.jsp").forward(request, response);
     }
 }

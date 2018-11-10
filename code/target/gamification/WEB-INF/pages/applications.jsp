@@ -2,6 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@include file="includes/header.jsp" %>
 
+<<<<<<< HEAD
 <div class="clearfix mb-2">
     <form class="form-inline d-inline float-left" method="get" action="pages/applications">
         <input name="query" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search">
@@ -20,6 +21,13 @@
         </div>
     </div>
 </div>
+=======
+<form class="form-inline " method="get" action="pages/applications">
+    <input name="query" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search">
+    <input type="hidden" name="user" value="${idUser}">
+    <i class="fa fa-search" aria-hidden="true"></i>
+</form>
+>>>>>>> 9d5fdb426c46fa743759ff8f0e55cdcbd6b75107
 
 <c:if test="${not empty applications}">
     <div class="list-group">

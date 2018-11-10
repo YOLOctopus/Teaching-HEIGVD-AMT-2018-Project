@@ -24,7 +24,7 @@
 <c:if test="${not empty users}">
     <div class="list-group">
         <c:forEach items="${users}" var="client">
-            <a href="pages/applications?user=${client.getId()}" class="list-group-item list-group-item-action">
+            <a href="pages/applications?user=${client.getId()}" class="list-group-item list-group-item-action clearfix">
                 <span>${client.getFirstName()} </span>
                 <span>${client.getLastName()}</span>
                 <span class="float-right">${client.getEmail()}</span>
