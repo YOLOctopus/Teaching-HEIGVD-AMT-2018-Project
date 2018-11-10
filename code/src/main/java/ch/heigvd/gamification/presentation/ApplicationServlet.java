@@ -18,6 +18,25 @@ public class ApplicationServlet extends HttpServlet {
     ApplicationsManagerLocal applicationsManager;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Long id = Long.parseLong(request.getParameter("id"));
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+
+        Application application = null;
+
+        try {
+            application = applicationsManager.findById(id);
+        } catch (BusinessDomainEntityNotFoundException e) {
+            e.printStackTrace();
+        }
+        application.setName(name);
+        application.setDescription(description);
+        try {
+            applicationsManager.update(application);
+        } catch (BusinessDomainEntityNotFoundException e) {
+            e.printStackTrace();
+        }
+        response.sendRedirect("./application?id=" + application.getId());
 
     }
 

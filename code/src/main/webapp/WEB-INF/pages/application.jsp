@@ -17,6 +17,7 @@
         <label for="apisecret">API Secret</label>
         <input class="form-control" type="text" id="apisecret" value="${application.getApiSecret()}" readonly>
     </div>
+    <input type="hidden" name="id" value="${application.getId()}">
     <button type="submit" class="btn btn-primary">Save changes</button>
     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#alertMessage">Delete application</button>
 </form>
