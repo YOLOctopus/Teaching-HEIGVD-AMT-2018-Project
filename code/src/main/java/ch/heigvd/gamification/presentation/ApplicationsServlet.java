@@ -24,7 +24,18 @@ public class ApplicationsServlet extends HttpServlet {
     UsersManagerLocal usersManager;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        if(request.getParameterMap().containsKey("delete")) {
+            User user = null;
+            Application appToDelete = null;
+            try {
+                appToDelete = applicationsManager.findById(Long.parseLong(request.getParameter("delete")));
+                user = appToDelete.getUser();
+                applicationsManager.delete(appToDelete);
+            } catch (BusinessDomainEntityNotFoundException e) {
+                e.printStackTrace();
+            }
+            response.sendRedirect("./applications?user=" + user.getId());
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,6 +47,7 @@ public class ApplicationsServlet extends HttpServlet {
             e.printStackTrace();
         }
         List<Application> applications;
+
         if(request.getParameterMap().containsKey("query")) {
             applications = applicationsManager.findByQuery(user, "%" + request.getParameter("query") + "%");
         } else {
