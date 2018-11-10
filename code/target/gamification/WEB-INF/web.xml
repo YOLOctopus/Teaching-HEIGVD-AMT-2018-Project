@@ -32,6 +32,10 @@
         <servlet-name>ApplicationsServlet</servlet-name>
         <servlet-class>ch.heigvd.gamification.presentation.ApplicationsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ApplicationServlet</servlet-name>
+        <servlet-class>ch.heigvd.gamification.presentation.ApplicationServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/pages/login</url-pattern>
@@ -59,5 +63,9 @@
     <servlet-mapping>
         <servlet-name>ApplicationsServlet</servlet-name>
         <url-pattern>/pages/applications</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApplicationServlet</servlet-name>
+        <url-pattern>/pages/application</url-pattern>
     </servlet-mapping>
 </web-app>

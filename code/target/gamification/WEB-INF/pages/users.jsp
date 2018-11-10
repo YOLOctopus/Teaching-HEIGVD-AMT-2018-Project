@@ -10,9 +10,18 @@
 <c:if test="${not empty users}">
     <div class="list-group">
         <c:forEach items="${users}" var="client">
-            <a href="pages/applications?user=${client.getId()}" class="list-group-item list-group-item-action">
-                ${client.getFirstName()} ${client.getLastName()}
-                ${client.getEmail()}
+            <a href="pages/applications?user=${client.getId()}" class="list-group-item">
+                <div class="checkbox pull-left">
+                    <label>
+                        <input type="checkbox" value="">
+                    </label>
+                </div>
+
+                <div class="pull-left form-control-inline">
+                    <h4 class="list-group-item-heading"> ${client.getFirstName()} ${client.getLastName()}</h4>
+                    <p class="list-group-item-text">${client.getEmail()}</p>
+                </div>
+                <div class="clearfix"></div>
             </a>
         </c:forEach>
     </div>

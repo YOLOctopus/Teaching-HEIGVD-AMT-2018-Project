@@ -36,6 +36,7 @@
                         <c:if test="${admin}">
                             <a class="nav-item ml-2" href="pages/users">Users</a>
                         </c:if>
+                        <a class="nav-item ml-auto" href="pages/applications?user=${id}">Applications</a>
                         <a class="nav-item ml-auto" href="pages/logout">Logout</a>
                     </c:when>
                     <c:otherwise>

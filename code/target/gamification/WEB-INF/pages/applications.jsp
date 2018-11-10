@@ -2,6 +2,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@include file="includes/header.jsp" %>
 
+<c:if test="${not admin && idUser != id}">
+    <c:redirect url="/pages/home"/>
+</c:if>
+
 <form class="form-inline " method="get" action="pages/applications">
     <input name="query" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search">
     <input type="hidden" name="user" value="${idUser}">

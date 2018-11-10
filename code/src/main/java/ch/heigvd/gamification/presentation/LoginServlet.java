@@ -2,6 +2,7 @@ package ch.heigvd.gamification.presentation;
 
 import ch.heigvd.gamification.business.LoginConfirmation;
 import ch.heigvd.gamification.dao.BusinessDomainEntityNotFoundException;
+import ch.heigvd.gamification.dao.UsersManagerLocal;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
@@ -15,6 +16,9 @@ public class LoginServlet extends HttpServlet {
     @EJB
     LoginConfirmation loginConfirmation;
 
+    @EJB
+    UsersManagerLocal usersManager;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String pwd = request.getParameter("pwd");
@@ -23,6 +27,7 @@ public class LoginServlet extends HttpServlet {
             if (loginConfirmation.confirm(email, pwd)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", email);
+                session.setAttribute("id", usersManager.findByEmail(email).getId());
                 session.setAttribute("admin", loginConfirmation.isAdmin(email));
                 session.setMaxInactiveInterval(30*60);
                 String encodedURL = response.encodeRedirectURL("home");
