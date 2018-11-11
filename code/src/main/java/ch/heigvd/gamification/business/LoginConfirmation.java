@@ -17,7 +17,7 @@ public class LoginConfirmation {
     }
 
     public Boolean confirm(String email, String password) throws BusinessDomainEntityNotFoundException {
-        return checkEmail(email) && checkPwd(email, password);
+        return checkEmail(email) && checkPwd(email, password) && usersManager.findByEmail(email).isActive();
     }
 
     public Boolean isAdmin(String email) {

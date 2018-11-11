@@ -17,5 +17,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
 </form>
+<a href="pages/forgotpassword">Forgot password?</a>
 
 <%@include file="includes/footer.jsp" %>

@@ -6,6 +6,7 @@ import java.util.UUID;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "UserToken.findByToken", query = "SELECT u FROM UserToken u WHERE u.token = :token"),
+        @NamedQuery(name = "UserToken.findByUser", query = "SELECT u FROM UserToken u WHERE u.user = :user"),
 })
 public class UserToken extends AbstractDomainModelEntity<Long>  {
     @ManyToOne
