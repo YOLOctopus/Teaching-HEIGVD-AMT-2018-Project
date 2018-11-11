@@ -40,6 +40,14 @@
         <servlet-name>NewApplicationServlet</servlet-name>
         <servlet-class>ch.heigvd.gamification.presentation.NewApplicationServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccountActivationServlet</servlet-name>
+        <servlet-class>ch.heigvd.gamification.presentation.AccountActivationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterConfirmationServlet</servlet-name>
+        <servlet-class>ch.heigvd.gamification.presentation.RegisterConfirmationServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/pages/login</url-pattern>
@@ -75,5 +83,13 @@
     <servlet-mapping>
         <servlet-name>NewApplicationServlet</servlet-name>
         <url-pattern>/pages/newapplication</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccountActivationServlet</servlet-name>
+        <url-pattern>/pages/accountactivation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterConfirmationServlet</servlet-name>
+        <url-pattern>/pages/registerconfirmation</url-pattern>
     </servlet-mapping>
 </web-app>

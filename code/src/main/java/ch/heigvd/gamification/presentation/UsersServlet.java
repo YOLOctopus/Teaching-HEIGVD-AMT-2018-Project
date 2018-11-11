@@ -1,5 +1,6 @@
 package ch.heigvd.gamification.presentation;
 
+import ch.heigvd.gamification.dao.BusinessDomainEntityNotFoundException;
 import ch.heigvd.gamification.dao.UsersManagerLocal;
 import ch.heigvd.gamification.model.User;
 
@@ -23,9 +24,29 @@ public class UsersServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<User> users;
+
         if (request.getParameterMap().containsKey("query")) {
             users = usersManager.findByQuery("%" + request.getParameter("query") + "%");
         } else {
+            String[] selectedUsers = request.getParameterValues("users");
+            for (String userId : selectedUsers) {
+                Long id = Long.parseLong(userId);
+                User user = null;
+                try {
+                    user = usersManager.findById(id);
+                } catch (BusinessDomainEntityNotFoundException e) {
+                    e.printStackTrace();
+                }
+                if (request.getParameterMap().containsKey("reset")) {
+
+                } else if (request.getParameterMap().containsKey("setactive")) {
+                    if (user.isActive()) {
+                        user.setActive(false);
+                    } else {
+                        user.setActive(true);
+                    }
+                }
+            }
             final int MAX_PAGINATION_PAGE = 10;
             int page = 0;
             int pageSize = 5;

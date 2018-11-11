@@ -20,7 +20,7 @@ public class UsersManager extends GenericDAO<User, Long> implements UsersManager
         try {
             user = (User) em.createNamedQuery("User.findByEmail").setParameter("email", mail).getSingleResult();
         } catch (NoResultException e) {
-
+            //TODO: LOG
         }
         return user;
     }

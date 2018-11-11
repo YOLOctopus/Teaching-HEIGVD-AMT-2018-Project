@@ -26,9 +26,12 @@ public class Application extends AbstractDomainModelEntity<Long> {
     public Application() {
     }
 
-    public Application(String name, String description, String apiKey, String apiSecret) {
+    public Application(String name, String description, String apiKey, String apiSecret, User user) {
         this.name = name;
         this.description = description;
+        this.apiKey = apiKey;
+        this.apiSecret = apiSecret;
+        this.user = user;
     }
 
     public String getName() {

@@ -30,11 +30,20 @@ public class NewApplicationServlet extends HttpServlet {
             String description = request.getParameter("description");
             String apiKey = UUID.randomUUID().toString();
             String apiSecret = UUID.randomUUID().toString();
-            Application application = new Application(name, description, apiKey, apiSecret);
-            //TODO: Continue
+            User user = null;
+            try {
+                user = usersManager.findById(idUser);
+            } catch (BusinessDomainEntityNotFoundException e) {
+                e.printStackTrace();
+            }
+            Application application = new Application(name, description, apiKey, apiSecret, user);
+            applicationsManager.create(application);
+            request.setAttribute("application", application);
+            request.getRequestDispatcher("/WEB-INF/pages/application.jsp").forward(request, response);
+        } else {
+            request.setAttribute("id", idUser);
+            request.getRequestDispatcher("/WEB-INF/pages/newapplication.jsp").forward(request, response);
         }
-
-        request.getRequestDispatcher("/WEB-INF/pages/newapplication.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
