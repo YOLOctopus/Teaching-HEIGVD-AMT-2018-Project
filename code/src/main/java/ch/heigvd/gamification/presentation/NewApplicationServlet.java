@@ -34,7 +34,7 @@ public class NewApplicationServlet extends HttpServlet {
             try {
                 user = usersManager.findById(idUser);
             } catch (BusinessDomainEntityNotFoundException e) {
-                e.printStackTrace();
+                //TODO: log
             }
             Application application = new Application(name, description, apiKey, apiSecret, user);
             applicationsManager.create(application);

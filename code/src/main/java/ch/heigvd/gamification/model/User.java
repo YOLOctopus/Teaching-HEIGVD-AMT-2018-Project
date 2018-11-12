@@ -28,18 +28,22 @@ public class User extends AbstractDomainModelEntity<Long> {
     @Column(nullable = false)
     private boolean admin;
 
+    @Column(nullable = false)
+    private boolean mustResetPassword;
+
     @OneToMany(mappedBy = "user")
     private List<Application> applications = new LinkedList<>();
 
     public User() {}
 
-    public User(String firstName, String lastName, String email, String password, boolean active, boolean admin) {
+    public User(String firstName, String lastName, String email, String password, boolean active, boolean admin, boolean mustResetPassword) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.active = active;
         this.admin = admin;
+        this.mustResetPassword = mustResetPassword;
     }
 
     public String getFirstName() {
@@ -88,6 +92,14 @@ public class User extends AbstractDomainModelEntity<Long> {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public boolean isMustResetPassword() {
+        return mustResetPassword;
+    }
+
+    public void setMustResetPassword(boolean mustResetPassword) {
+        this.mustResetPassword = mustResetPassword;
     }
 
     public List<Application> getApplications() {

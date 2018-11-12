@@ -27,14 +27,14 @@ public class ApplicationServlet extends HttpServlet {
         try {
             application = applicationsManager.findById(id);
         } catch (BusinessDomainEntityNotFoundException e) {
-            e.printStackTrace();
+            //TODO: log
         }
         application.setName(name);
         application.setDescription(description);
         try {
             applicationsManager.update(application);
         } catch (BusinessDomainEntityNotFoundException e) {
-            e.printStackTrace();
+            //TODO: log
         }
         request.setAttribute("success", true);
         request.setAttribute("id", application.getId());
@@ -48,7 +48,7 @@ public class ApplicationServlet extends HttpServlet {
         try {
             application = applicationsManager.findById(idApplication);
         } catch (BusinessDomainEntityNotFoundException e) {
-            e.printStackTrace();
+            //TODO: log
         }
         request.setAttribute("application", application);
         request.getRequestDispatcher("/WEB-INF/pages/application.jsp").forward(request, response);

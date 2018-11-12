@@ -3,6 +3,7 @@ package ch.heigvd.gamification.business;
 import ch.heigvd.gamification.dao.BusinessDomainEntityNotFoundException;
 import ch.heigvd.gamification.dao.UsersManagerLocal;
 import ch.heigvd.gamification.model.User;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

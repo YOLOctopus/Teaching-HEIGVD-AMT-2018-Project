@@ -48,7 +48,7 @@ public class RegistrationServlet extends HttpServlet {
             if (!registerConfirmation.validEmail(email))
                 errors.add("Invalid email");
         } catch (BusinessDomainEntityNotFoundException e) {
-            e.printStackTrace();
+            //TODO: log
         }
         if (!registerConfirmation.validPassword(pwd))
             errors.add("invalid password");
@@ -56,7 +56,7 @@ public class RegistrationServlet extends HttpServlet {
         // test fields
         if (errors.isEmpty()) {
             // Call DAO manager to insert user in DB
-            User user = usersManager.createAndReturnManagedEntity(new User(firstName, lastName, email, pwd, false, false));
+            User user = usersManager.createAndReturnManagedEntity(new User(firstName, lastName, email, pwd, false, false, false));
             UserToken userToken = new UserToken(user);
             userTokenManager.create(userToken);
             try {
@@ -65,7 +65,7 @@ public class RegistrationServlet extends HttpServlet {
                         user.getEmail(),
                         user.getFirstName() + " " + user.getLastName(), "Please follow this link to activate your account : http://localhost:8080/gamification/pages/accountactivation?token=" + userToken.getToken());
             } catch (MessagingException e) {
-                e.printStackTrace();
+                //TODO: log
             }
             request.getRequestDispatcher("/WEB-INF/pages/registerconfirmation.jsp").forward(request, response);
         } else {

@@ -32,7 +32,7 @@ public class ApplicationsServlet extends HttpServlet {
                 user = appToDelete.getUser();
                 applicationsManager.delete(appToDelete);
             } catch (BusinessDomainEntityNotFoundException e) {
-                e.printStackTrace();
+                //TODO: log
             }
             response.sendRedirect("./applications?user=" + user.getId());
         }
@@ -44,7 +44,7 @@ public class ApplicationsServlet extends HttpServlet {
         try {
             user = usersManager.findById(idUser);
         } catch (BusinessDomainEntityNotFoundException e) {
-            e.printStackTrace();
+            //TODO: log
         }
         List<Application> applications;
 

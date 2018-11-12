@@ -39,6 +39,7 @@ public class PasswordResetServlet extends HttpServlet {
                 try {
                     User user = usersManager.findById(id);
                     user.setPassword(newPassword);
+                    user.setMustResetPassword(false);
                     usersManager.update(user);
                     request.setAttribute("success", true);
                 } catch (BusinessDomainEntityNotFoundException e) {
@@ -54,8 +55,19 @@ public class PasswordResetServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String token = request.getParameter("token");
-        UserToken userToken = userTokenManager.findByToken(token);
+        UserToken userToken = null;
+        if (request.getParameterMap().containsKey("token")) {
+            String token = request.getParameter("token");
+            userToken = userTokenManager.findByToken(token);
+        }
+        if (request.getParameterMap().containsKey("userId")) {
+            Long userId = Long.parseLong(request.getParameter("userId"));
+            try {
+                userToken = userTokenManager.findByUser(usersManager.findById(userId));
+            } catch (BusinessDomainEntityNotFoundException e) {
+                //TODO: log
+            }
+        }
         request.setAttribute("userId", userToken.getUser().getId());
         request.getRequestDispatcher("/WEB-INF/pages/passwordreset.jsp").forward(request, response);
     }

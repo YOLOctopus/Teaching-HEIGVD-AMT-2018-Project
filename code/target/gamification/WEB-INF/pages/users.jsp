@@ -26,7 +26,7 @@
         </div>
     </div>
 </div>
-<form action="pages/users" method="get">
+<form action="pages/users" method="post">
     <c:if test="${not empty users}">
         <div class="list-group">
             <c:forEach items="${users}" var="client">
@@ -35,11 +35,9 @@
                         <a class="list-title d-inline float-left" href="pages/applications?user=${client.getId()}">
                             <span>${client.getFirstName()} ${client.getLastName()}</span>
                         </a>
-                        <form>
-                            <div class="form-check d-inline float-right">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="users" value="${client.getId()}">
-                            </div>
-                        </form>
+                        <div class="form-check d-inline float-right">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="users" value="${client.getId()}">
+                        </div>
                     </div>
                     <div class="list-subtitle">
                         ${client.getEmail()}

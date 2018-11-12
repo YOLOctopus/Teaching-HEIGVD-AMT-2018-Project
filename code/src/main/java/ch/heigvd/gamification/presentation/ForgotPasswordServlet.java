@@ -36,7 +36,7 @@ public class ForgotPasswordServlet extends HttpServlet {
                     email,
                     user.getFirstName() + " " + user.getLastName(), "Please follow this link to reset your password : http://localhost:8080/gamification/pages/resetpassword?token=" + userToken.getToken());
         } catch (MessagingException e) {
-            e.printStackTrace();
+            //TODO: log
         }
         request.setAttribute("email", email);
         request.getRequestDispatcher("/WEB-INF/pages/forgotpassword.jsp").forward(request, response);

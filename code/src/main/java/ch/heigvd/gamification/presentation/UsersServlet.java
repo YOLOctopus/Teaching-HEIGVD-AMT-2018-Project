@@ -1,10 +1,12 @@
 package ch.heigvd.gamification.presentation;
 
+import ch.heigvd.gamification.business.EmailSender;
 import ch.heigvd.gamification.dao.BusinessDomainEntityNotFoundException;
 import ch.heigvd.gamification.dao.UsersManagerLocal;
 import ch.heigvd.gamification.model.User;
 
 import javax.ejb.EJB;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,41 +14,71 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @WebServlet(name = "UsersServlet")
 public class UsersServlet extends HttpServlet {
     @EJB
     UsersManagerLocal usersManager;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @EJB
+    EmailSender emailSender;
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getParameterMap().containsKey("reset") || request.getParameterMap().containsKey("setactive")) {
+            String[] selectedUsers = request.getParameterValues("users");
+            if (selectedUsers != null) {
+                for (String userId : selectedUsers) {
+                    Long id = Long.parseLong(userId);
+                    User user = null;
+                    try {
+                        user = usersManager.findById(id);
+                    } catch (BusinessDomainEntityNotFoundException e) {
+                        //TODO: log
+                    }
+                    if (request.getParameterMap().containsKey("reset")) {
+                        String newPassword = UUID.randomUUID().toString();
+                        user.setPassword(newPassword);
+                        user.setMustResetPassword(true);
+                        try {
+                            usersManager.update(user);
+                        } catch (BusinessDomainEntityNotFoundException e) {
+                            //TODO: log
+                        }
+                        try {
+                            emailSender.sendEmail("Your password has been reset",
+                                    user.getEmail(),
+                                    user.getFirstName() + " " + user.getLastName(),
+                                    "Your password has been reset by an administrator. Use this password to log in. You will then be asked to change it. New password : " + newPassword);
+                        } catch (MessagingException e) {
+                            //TODO: log
+                        }
+                    } else if (request.getParameterMap().containsKey("setactive")) {
+                        user.setActive(!user.isActive());
+                        try {
+                            usersManager.update(user);
+                        } catch (BusinessDomainEntityNotFoundException e) {
+                            //TODO: log
+                        }
+                    }
+                }
+            }
+        }
+        getUsersList(request);
+        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        getUsersList(request);
+        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
+    }
+
+    private void getUsersList(HttpServletRequest request) {
         List<User> users;
 
         if (request.getParameterMap().containsKey("query")) {
             users = usersManager.findByQuery("%" + request.getParameter("query") + "%");
         } else {
-            String[] selectedUsers = request.getParameterValues("users");
-            for (String userId : selectedUsers) {
-                Long id = Long.parseLong(userId);
-                User user = null;
-                try {
-                    user = usersManager.findById(id);
-                } catch (BusinessDomainEntityNotFoundException e) {
-                    e.printStackTrace();
-                }
-                if (request.getParameterMap().containsKey("reset")) {
-
-                } else if (request.getParameterMap().containsKey("setactive")) {
-                    if (user.isActive()) {
-                        user.setActive(false);
-                    } else {
-                        user.setActive(true);
-                    }
-                }
-            }
             final int MAX_PAGINATION_PAGE = 10;
             int page = 0;
             int pageSize = 5;
@@ -69,6 +101,5 @@ public class UsersServlet extends HttpServlet {
             request.setAttribute("maxPage", maxPage);
         }
         request.setAttribute("users", users);
-        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
     }
 }
