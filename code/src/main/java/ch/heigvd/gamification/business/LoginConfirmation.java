@@ -3,7 +3,6 @@ package ch.heigvd.gamification.business;
 import ch.heigvd.gamification.dao.BusinessDomainEntityNotFoundException;
 import ch.heigvd.gamification.dao.UsersManagerLocal;
 import ch.heigvd.gamification.model.User;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -18,7 +17,7 @@ public class LoginConfirmation {
     }
 
     public Boolean confirm(String email, String password) throws BusinessDomainEntityNotFoundException {
-        return checkEmail(email) && checkPwd(email, password) && usersManager.findByEmail(email).isActive();
+        return checkEmail(email) && checkPwd(email, password);
     }
 
     public Boolean isAdmin(String email) {
