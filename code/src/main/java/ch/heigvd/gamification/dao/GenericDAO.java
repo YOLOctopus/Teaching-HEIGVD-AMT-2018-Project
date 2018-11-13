@@ -2,8 +2,6 @@ package ch.heigvd.gamification.dao;
 
 import ch.heigvd.gamification.model.AbstractDomainModelEntity;
 
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;

@@ -49,7 +49,6 @@ public class LoginServlet extends HttpServlet {
             }
         } catch (BusinessDomainEntityNotFoundException e) {
             //TODO: log
-
         }
     }
 

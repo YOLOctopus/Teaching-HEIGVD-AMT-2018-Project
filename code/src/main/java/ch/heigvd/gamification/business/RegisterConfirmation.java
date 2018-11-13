@@ -31,4 +31,5 @@ public class RegisterConfirmation {
         return password.length() >= 7;
     }
 
+
 }
