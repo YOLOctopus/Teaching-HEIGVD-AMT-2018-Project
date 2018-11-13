@@ -7,7 +7,6 @@
         </div>
     </c:forEach>
 </c:if>
-<c:if test="${not empty firstName}">${firstName}</c:if>
 <h2>Register</h2>
 <form method="post" action="./pages/register">
     <div class="form-group">
