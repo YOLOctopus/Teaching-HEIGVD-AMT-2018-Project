@@ -5,8 +5,8 @@
 
 Email : ${user.getEmail()} <br/>
 Name  : ${user.getFirstName()} ${user.getLastName()}
-<form method="post" action="pages/forgotpassword">
-    <input type="hidden" name="email" value="${user.getEmail()}">
+<form method="get" action="pages/resetpassword">
+    <input type="hidden" name="userId" value="${user.getId()}">
     <button type="submit" class="btn btn-danger">Reset password</button>
 </form>
 

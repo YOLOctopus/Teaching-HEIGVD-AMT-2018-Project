@@ -69,8 +69,17 @@ public class UsersServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getUsersList(request);
-        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
+        Boolean isAdmin = false;
+        if (request.getParameterMap().containsKey("admin")) {
+            isAdmin = (Boolean)request.getSession().getAttribute("admin");
+        }
+
+        if (isAdmin) {
+            getUsersList(request);
+            request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(request, response);
+        }
     }
 
     private void getUsersList(HttpServletRequest request) {
