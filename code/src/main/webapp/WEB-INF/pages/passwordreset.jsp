@@ -10,14 +10,14 @@
         <form action="pages/resetpassword" method="post">
             <div class="form-group">
                 <label for="newPassword">New password</label>
-                <input class="form-control" id="newPassword" type="password" name="newPassword">
+                <input class="form-control" id="newPassword" type="password" name="newPassword" id="new-pwd">
             </div>
             <div class="form-group">
                 <label for="passwordRepeat">Repeat password</label>
-                <input class="form-control" id="passwordRepeat" type="password" name="passwordRepeat">
+                <input class="form-control" id="passwordRepeat" type="password" name="passwordRepeat" id="repeat-pwd">
             </div>
             <input type="hidden" name="userId" value="${userId}">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-sm btn-primary" id="submit-btn">Submit</button>
         </form>
     </c:when>
     <c:when test="${success}">

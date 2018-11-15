@@ -9,8 +9,8 @@
 <div class="clearfix mb-2">
     <h1 class="d-inline">Applications</h1>
     <form action="pages/newapplication" method="post" class="d-inline">
-        <input type="hidden" name="id" value="${idUser}">
-        <input type="submit" class="btn-sm btn-primary btn-right-w float-right" value="New app">
+        <input type="hidden" name="id" value="${idUser}"/>
+        <button type="submit" class="btn btn-sm btn-primary btn-right-w float-right" id="newapp-btn">New app</button>
     </form>
 </div>
 
@@ -18,9 +18,9 @@
 
 <div class="clearfix mb-2">
     <form class="form-inline d-inline float-left" method="get" action="pages/applications">
-        <input name="query" class="form-control form-control-sm w-100" type="text" placeholder="Search" aria-label="Search">
-        <input type="hidden" value="${idUser}" name="user">
-        <i class="fa fa-search" aria-hidden="true"></i>
+        <input name="query" class="form-control form-control-sm w-100" type="text" placeholder="Search" aria-label="Search"/>
+        <input type="hidden" value="${idUser}" name="user"/>
+        <i class="fa fa-search" aria-hidden="true"/>
     </form>
 
     <div class="dropdown d-inline float-right">
@@ -28,10 +28,10 @@
             Apps per page
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=5">5</a>
-            <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=10">10</a>
-            <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=20">20</a>
-            <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=50">50</a>
+            <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=5" id="pagesize-5">5</a>
+            <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=10" id="pagesize-10">10</a>
+            <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=20" id="pagesize-20">20</a>
+            <a class="dropdown-item" href="pages/applications?user=${idUser}&pagesize=50" id="pagesize-50">50</a>
         </div>
     </div>
 </div>

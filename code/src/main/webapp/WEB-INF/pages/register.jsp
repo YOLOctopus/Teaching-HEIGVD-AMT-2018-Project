@@ -25,7 +25,7 @@
         <label for="pwd">Password</label>
         <input type="password" class="form-control" placeholder="Enter Password" name="pwd" id="pwd">
     </div>
-    <button type="submit" class="btn btn-primary">Register</button>
+    <button type="submit" class="btn btn-primary" id="register-btn">Register</button>
 </form>
 
 <%@include file="includes/footer.jsp" %>
