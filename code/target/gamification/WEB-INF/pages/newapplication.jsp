@@ -1,3 +1,10 @@
+<%--
+    Document   : newapplication
+    Created on : 28.10.2018
+    Author     : Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+    Goal       : New application page
+--%>
+
 <%@include file="includes/header.jsp" %>
 
 <form action="pages/newapplication" method="post">

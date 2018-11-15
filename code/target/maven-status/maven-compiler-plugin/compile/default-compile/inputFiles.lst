@@ -1,4 +1,5 @@
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/model/UserToken.java
+/home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/presentation/ForgotPasswordServlet.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/dao/UserTokenManagerLocal.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/presentation/UsersServlet.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/dao/BusinessDomainEntityNotFoundException.java
@@ -7,6 +8,7 @@
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/dao/UserTokenManager.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/presentation/LoginServlet.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/presentation/RegisterConfirmationServlet.java
+/home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/presentation/PasswordResetServlet.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/dao/UsersManagerLocal.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/dao/ApplicationsManagerLocal.java
 /home/samuel/Documents/Semestre5/AMT/gamification/Teaching-HEIGVD-AMT-2018-Project/code/src/main/java/ch/heigvd/gamification/dao/UsersManager.java

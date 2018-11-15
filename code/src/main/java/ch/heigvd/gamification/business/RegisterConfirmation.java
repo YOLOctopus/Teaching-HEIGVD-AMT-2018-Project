@@ -1,3 +1,10 @@
+/**
+ * @document RegisterConfirmation
+ * @date 28.10.2018
+ * @author Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+ * @Goal EJB that checks that registration fields are correct and check the DB if email already exists
+ */
+
 package ch.heigvd.gamification.business;
 
 import ch.heigvd.gamification.dao.BusinessDomainEntityNotFoundException;

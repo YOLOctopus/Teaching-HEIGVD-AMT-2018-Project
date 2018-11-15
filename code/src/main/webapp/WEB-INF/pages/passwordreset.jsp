@@ -1,3 +1,10 @@
+<%--
+    Document   : passwordreset
+    Created on : 28.10.2018
+    Author     : Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+    Goal       : Password reset page. The user must confirm his password in order to change it
+--%>
+
 <%@include file="includes/header.jsp" %>
 
 <c:choose>

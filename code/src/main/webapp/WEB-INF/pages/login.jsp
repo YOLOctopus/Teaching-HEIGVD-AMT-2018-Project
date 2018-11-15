@@ -1,3 +1,10 @@
+<%--
+    Document   : login
+    Created on : 28.10.2018
+    Author     : Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+    Goal       : Login page
+--%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="includes/header.jsp" %>
 <c:if test="${not empty error}">

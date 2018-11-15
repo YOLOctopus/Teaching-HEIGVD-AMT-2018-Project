@@ -1,3 +1,10 @@
+/**
+ * @document ForgotPasswordServlet
+ * @date 28.10.2018
+ * @author Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+ * @Goal Process requests for the forgot password page. Sends an email to the provided address
+ */
+
 package ch.heigvd.gamification.presentation;
 
 import ch.heigvd.gamification.business.EmailSender;
@@ -14,9 +21,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "ForgotPasswordServlet")
 public class ForgotPasswordServlet extends HttpServlet {
+
+    private static final Logger LOG = Logger.getLogger(ForgotPasswordServlet.class.getName());
+
     @EJB
     UsersManagerLocal usersManager;
 
@@ -36,7 +48,7 @@ public class ForgotPasswordServlet extends HttpServlet {
                     email,
                     user.getFirstName() + " " + user.getLastName(), "Please follow this link to reset your password : http://localhost:8080/gamification/pages/resetpassword?token=" + userToken.getToken());
         } catch (MessagingException e) {
-            //TODO: log
+            LOG.log(Level.SEVERE, e.getMessage(), e);
         }
         request.setAttribute("email", email);
         request.getRequestDispatcher("/WEB-INF/pages/forgotpassword.jsp").forward(request, response);
