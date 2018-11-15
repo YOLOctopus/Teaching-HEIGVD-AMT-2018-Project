@@ -8,10 +8,11 @@ module.exports = {
     firstname: '#firstname',
     lastname: '#lastname',
     email: '#email',
-    password: '#password',
+    password: '#pwd',
   },
-  submitButton: {
-    css: '#register',
+  submit: {
+    register: '#register-btn',
+    redirect: '#redirect',
   },
   divs: {
     registerConfirmation: '#confirmation-text',
@@ -27,11 +28,11 @@ module.exports = {
     I.fillField(this.fields.lastname, lastname)
     I.fillField(this.fields.email, email)
     I.fillField(this.fields.password, password)
-    I.click(this.submitButton)
+    I.click(this.submit.register)
     I.waitForElement(this.divs.registerConfirmation)
     I.see('Thank you for registering. Please activate your account by clicking the link in the mail sent to the mail address you provided.')
     I.amOnPage(`http://localhost:8080/gamification/pages/usertoken?email=${email}`)
-    I.click('Redirect')
+    I.click(this.submit.redirect)
     I.see('You have successfully activated your account. You can now log in.')
   }
 }

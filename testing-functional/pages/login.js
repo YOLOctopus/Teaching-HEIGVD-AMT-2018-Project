@@ -6,10 +6,10 @@ module.exports = {
   // setting locators
   fields: {
     email: '#email',
-    password: '#password',
+    password: '#pwd'
   },
-  submitButton: {
-    css: '#login',
+  submit: {
+    login: '#login-btn'
   },
 
   // introducing methods
@@ -20,6 +20,6 @@ module.exports = {
     I.see('Login', 'h2')
     I.fillField(this.fields.email, email)
     I.fillField(this.fields.password, password)
-    I.click('Login')
+    I.click(this.submit.login)
   }
 }

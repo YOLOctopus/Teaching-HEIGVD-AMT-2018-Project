@@ -30,9 +30,9 @@
     </div>
     <div class="form-group">
         <label for="pwd">Password</label>
-        <input id="password" type="password" class="form-control" placeholder="Enter Password" name="pwd" id="pwd">
+        <input type="password" class="form-control" placeholder="Enter Password" name="pwd" id="pwd">
     </div>
-    <button id="register" type="submit" class="btn btn-primary">Register</button>
+    <button type="submit" class="btn btn-primary" id="register-btn">Register</button>
 </form>
 
 <%@include file="includes/footer.jsp" %>

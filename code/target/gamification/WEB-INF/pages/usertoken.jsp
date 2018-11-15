@@ -1,1 +1,1 @@
-<a href="http://localhost:8080/gamification/pages/accountactivation?token=${token}">Redirect</a>
+<a href="http://localhost:8080/gamification/pages/accountactivation?token=${token}" id="redirect">Redirect</a>
