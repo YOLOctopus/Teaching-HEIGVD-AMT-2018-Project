@@ -2,10 +2,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@include file="includes/header.jsp" %>
 
-<c:if test="${not admin && idUser != id}">
-    <c:redirect url="home.jsp"/>
-</c:if>
-
 <div class="clearfix mb-2">
     <h1 class="d-inline">Applications</h1>
     <form action="pages/newapplication" method="post" class="d-inline">
