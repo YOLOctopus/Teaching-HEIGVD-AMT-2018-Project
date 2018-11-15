@@ -39,29 +39,29 @@
                             <ul class="navbar-nav">
                                 <c:if test="${admin}">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="pages/users">Users</a>
+                                        <a class="nav-link" href="pages/users" id="nav-users">Users</a>
                                     </li>
                                 </c:if>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/applications?user=${id}">Applications</a>
+                                    <a class="nav-link" href="pages/applications?user=${id}" id="nav-apps">Applications</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/profile">Profile</a>
+                                    <a class="nav-link" href="pages/profile" id="nav-profile">Profile</a>
                                 </li>
                             </ul>
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/logout">Logout</a>
+                                    <a class="nav-link" href="pages/logout" id="nav-logout">Logout</a>
                                 </li>
                             </ul>
                         </c:when>
                         <c:otherwise>
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/register">Register</a>
+                                    <a class="nav-link" href="pages/register" id="nav-register">Register</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/login">Login</a>
+                                    <a class="nav-link" href="pages/login" id="nav-login">Login</a>
                                 </li>
                             </ul>
                         </c:otherwise>
