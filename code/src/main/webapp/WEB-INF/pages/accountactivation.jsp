@@ -1,5 +1,7 @@
 <%@include file="includes/header.jsp" %>
 
-You have successfully activated your account. You can now log in.
+<div id="confirmation-text">
+    You have successfully activated your account. You can now log in.
+</div>
 
 <%@include file="includes/footer.jsp" %>

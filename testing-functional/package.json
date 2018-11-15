@@ -1,0 +1,15 @@
+{
+  "name": "testing-functional",
+  "version": "1.0.0",
+  "description": "Execute automated functional tests.",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/codeceptjs run"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "codeceptjs": "^1.4.5",
+    "webdriverio": "^4.14.0"
+  }
+}
