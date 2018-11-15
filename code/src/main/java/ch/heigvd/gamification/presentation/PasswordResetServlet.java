@@ -21,9 +21,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "PasswordResetServlet")
 public class PasswordResetServlet extends HttpServlet {
+
+    private static final Logger LOG = Logger.getLogger(PasswordResetServlet.class.getName());
+
     @EJB
     UserTokenManagerLocal userTokenManager;
 
@@ -50,7 +55,7 @@ public class PasswordResetServlet extends HttpServlet {
                     usersManager.update(user);
                     request.setAttribute("success", true);
                 } catch (BusinessDomainEntityNotFoundException e) {
-                    //TODO: log
+                    LOG.log(Level.SEVERE, e.getMessage(), e);
                 }
             } else {
                 request.setAttribute("userId", id);
@@ -72,7 +77,7 @@ public class PasswordResetServlet extends HttpServlet {
             try {
                 userToken = userTokenManager.findByUser(usersManager.findById(userId));
             } catch (BusinessDomainEntityNotFoundException e) {
-                //TODO: log
+                LOG.log(Level.SEVERE, e.getMessage(), e);
             }
         }
         request.setAttribute("userId", userToken.getUser().getId());

@@ -20,9 +20,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "AccountActivationServlet")
 public class AccountActivationServlet extends HttpServlet {
+
+    private static final Logger LOG = Logger.getLogger(AccountActivationServlet.class.getName());
+
     @EJB
     UserTokenManagerLocal userTokenManager;
 
@@ -41,7 +46,7 @@ public class AccountActivationServlet extends HttpServlet {
         try {
             usersManager.update(user);
         } catch (BusinessDomainEntityNotFoundException e) {
-            //TODO: log
+            LOG.log(Level.SEVERE, e.getMessage(), e);
         }
         request.getRequestDispatcher("/WEB-INF/pages/accountactivation.jsp").forward(request, response);
     }

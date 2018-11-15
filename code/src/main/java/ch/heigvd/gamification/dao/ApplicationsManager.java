@@ -14,9 +14,14 @@ import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Stateless
 public class ApplicationsManager extends GenericDAO<Application, Long> implements ApplicationsManagerLocal {
+
+    private static final Logger LOG = Logger.getLogger(ApplicationsManager.class.getName());
+
     @Override
     public List<Application> findByUser(User user) {
         List<Application> applications = new LinkedList<>();
@@ -46,7 +51,7 @@ public class ApplicationsManager extends GenericDAO<Application, Long> implement
                     .setParameter("query", query)
                     .getResultList();
         } catch (NoResultException ex) {
-            //TODO: LOG
+            LOG.log(Level.SEVERE, ex.getMessage(), ex);
         }
         return applications;
     }

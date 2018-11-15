@@ -21,9 +21,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "ApplicationsServlet")
 public class ApplicationsServlet extends HttpServlet {
+
+    private static final Logger LOG = Logger.getLogger(ApplicationsServlet.class.getName());
+
     @EJB
     ApplicationsManagerLocal applicationsManager;
 
@@ -39,7 +44,7 @@ public class ApplicationsServlet extends HttpServlet {
                 user = appToDelete.getUser();
                 applicationsManager.delete(appToDelete);
             } catch (BusinessDomainEntityNotFoundException e) {
-                //TODO: log
+                LOG.log(Level.SEVERE, e.getMessage(), e);
             }
             response.sendRedirect("./applications?user=" + user.getId());
         }
@@ -51,7 +56,7 @@ public class ApplicationsServlet extends HttpServlet {
         try {
             user = usersManager.findById(idUser);
         } catch (BusinessDomainEntityNotFoundException e) {
-            //TODO: log
+            LOG.log(Level.SEVERE, e.getMessage(), e);
         }
         List<Application> applications;
 
