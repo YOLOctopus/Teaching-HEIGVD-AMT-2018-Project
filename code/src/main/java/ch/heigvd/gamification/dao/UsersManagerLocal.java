@@ -1,3 +1,9 @@
+/**
+ * @document UsersManagerLocal
+ * @date 28.10.2018
+ * @author Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+ */
+
 package ch.heigvd.gamification.dao;
 
 import ch.heigvd.gamification.model.User;

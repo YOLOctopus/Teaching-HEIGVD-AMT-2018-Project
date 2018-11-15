@@ -1,3 +1,10 @@
+/**
+ * @document UsersServlet
+ * @date 28.10.2018
+ * @author Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+ * @Goal Process requests for users list.
+ */
+
 package ch.heigvd.gamification.presentation;
 
 import ch.heigvd.gamification.business.EmailSender;
@@ -35,7 +42,7 @@ public class UsersServlet extends HttpServlet {
     EmailSender emailSender;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameterMap().containsKey("reset") || request.getParameterMap().containsKey("setactive")) {
+        if (request.getParameterMap().containsKey("reset") || request.getParameterMap().containsKey("setactive") || request.getParameterMap().containsKey("delete")) {
             String[] selectedUsers = request.getParameterValues("users");
             if (selectedUsers != null) {
                 for (String userId : selectedUsers) {
@@ -51,13 +58,7 @@ public class UsersServlet extends HttpServlet {
                         String newPassword = UUID.randomUUID().toString();
                         user.setPassword(newPassword);
                         user.setMustResetPassword(true);
-                        try {
-                            usersManager.update(user);
-                            request.setAttribute("info", "Operation successfully executed");
-                        } catch (BusinessDomainEntityNotFoundException e) {
-                            LOG.log(Level.SEVERE, e.getMessage(), e);
-                            request.setAttribute("info", "There was a problem during the update");
-                        }
+                        updateUser(request, user);
                         try {
                             emailSender.sendEmail("Your password has been reset",
                                     user.getEmail(),
@@ -70,13 +71,7 @@ public class UsersServlet extends HttpServlet {
                         }
                     } else if (request.getParameterMap().containsKey("setactive")) {
                         user.setActive(!user.isActive());
-                        try {
-                            usersManager.update(user);
-                            request.setAttribute("info", "Operation successfully executed");
-                        } catch (BusinessDomainEntityNotFoundException e) {
-                            LOG.log(Level.SEVERE, e.getMessage(), e);
-                            request.setAttribute("info", "There was a problem during the update");
-                        }
+                        updateUser(request, user);
                     } else if (request.getParameterMap().containsKey("delete")) {
                         for (Application application : user.getApplications()) {
                             try {
@@ -100,6 +95,16 @@ public class UsersServlet extends HttpServlet {
         }
         getUsersList(request);
         request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
+    }
+
+    private void updateUser(HttpServletRequest request, User user) {
+        try {
+            usersManager.update(user);
+            request.setAttribute("info", "Operation successfully executed");
+        } catch (BusinessDomainEntityNotFoundException e) {
+            LOG.log(Level.SEVERE, e.getMessage(), e);
+            request.setAttribute("info", "There was a problem during the update");
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
