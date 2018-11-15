@@ -11,9 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "LoginServlet")
 public class LoginServlet extends HttpServlet {
+
+    private static final Logger LOG = Logger.getLogger(LoginServlet.class.getName());
+
     @EJB
     LoginConfirmation loginConfirmation;
 
@@ -48,8 +53,7 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
             }
         } catch (BusinessDomainEntityNotFoundException e) {
-            //TODO: log
-
+            LOG.log(Level.SEVERE, e.getMessage(), e);
         }
     }
 

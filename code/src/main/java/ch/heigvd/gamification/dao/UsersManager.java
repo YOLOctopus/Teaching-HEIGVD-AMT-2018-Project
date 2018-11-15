@@ -8,9 +8,14 @@ import javax.persistence.NoResultException;
 import javax.sql.DataSource;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Stateless
 public class UsersManager extends GenericDAO<User, Long> implements UsersManagerLocal {
+
+    private static final Logger LOG = Logger.getLogger(UsersManager.class.getName());
+
     @Resource(lookup = "jdbc/myressource")
     private DataSource dataSource;
 
@@ -20,7 +25,7 @@ public class UsersManager extends GenericDAO<User, Long> implements UsersManager
         try {
             user = (User) em.createNamedQuery("User.findByEmail").setParameter("email", mail).getSingleResult();
         } catch (NoResultException e) {
-            //TODO: LOG
+            LOG.log(Level.SEVERE, e.getMessage(), e);
         }
         return user;
     }
@@ -31,7 +36,7 @@ public class UsersManager extends GenericDAO<User, Long> implements UsersManager
         try {
             users = em.createNamedQuery("User.findByQuery").setParameter("query", query).getResultList();
         } catch (NoResultException ex) {
-            //TODO: LOG
+            LOG.log(Level.SEVERE, ex.getMessage(), ex);
         }
         return users;
     }

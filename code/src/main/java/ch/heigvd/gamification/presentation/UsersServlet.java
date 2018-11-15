@@ -17,9 +17,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "UsersServlet")
 public class UsersServlet extends HttpServlet {
+
+    private static final Logger LOG = Logger.getLogger(UsersServlet.class.getName());
+
     @EJB
     UsersManagerLocal usersManager;
 
@@ -39,7 +44,7 @@ public class UsersServlet extends HttpServlet {
                     try {
                         user = usersManager.findById(id);
                     } catch (BusinessDomainEntityNotFoundException e) {
-                        //TODO: log
+                        LOG.log(Level.SEVERE, e.getMessage(), e);
                         request.setAttribute("info", "Unable to find a user");
                     }
                     if (request.getParameterMap().containsKey("reset")) {
@@ -50,8 +55,8 @@ public class UsersServlet extends HttpServlet {
                             usersManager.update(user);
                             request.setAttribute("info", "Operation successfully executed");
                         } catch (BusinessDomainEntityNotFoundException e) {
-                            //TODO: log
-                            request.setAttribute("info", "There was a problem while during the update");
+                            LOG.log(Level.SEVERE, e.getMessage(), e);
+                            request.setAttribute("info", "There was a problem during the update");
                         }
                         try {
                             emailSender.sendEmail("Your password has been reset",
@@ -60,7 +65,7 @@ public class UsersServlet extends HttpServlet {
                                     "Your password has been reset by an administrator. Use this password to log in. You will then be asked to change it. New password : " + newPassword);
                             request.setAttribute("info", "Operation successfully executed");
                         } catch (MessagingException e) {
-                            //TODO: log
+                            LOG.log(Level.SEVERE, e.getMessage(), e);
                             request.setAttribute("info", "Mail couldn't be sent");
                         }
                     } else if (request.getParameterMap().containsKey("setactive")) {
@@ -69,15 +74,15 @@ public class UsersServlet extends HttpServlet {
                             usersManager.update(user);
                             request.setAttribute("info", "Operation successfully executed");
                         } catch (BusinessDomainEntityNotFoundException e) {
-                            //TODO: log
-                            request.setAttribute("info", "There was a problem while during the update");
+                            LOG.log(Level.SEVERE, e.getMessage(), e);
+                            request.setAttribute("info", "There was a problem during the update");
                         }
                     } else if (request.getParameterMap().containsKey("delete")) {
                         for (Application application : user.getApplications()) {
                             try {
                                 applicationsManager.delete(application);
                             } catch (BusinessDomainEntityNotFoundException e) {
-                                //TODO: log
+                                LOG.log(Level.SEVERE, e.getMessage(), e);
                                 request.setAttribute("info", "There was a problem while deleting an application");
                             }
                         }
@@ -86,7 +91,7 @@ public class UsersServlet extends HttpServlet {
                             usersManager.delete(user);
                             request.setAttribute("info", "Operation successfully executed");
                         } catch (BusinessDomainEntityNotFoundException e) {
-                            //TODO: log
+                            LOG.log(Level.SEVERE, e.getMessage(), e);
                             request.setAttribute("info", "There was a problem while deleting a user");
                         }
                     }
