@@ -70,7 +70,7 @@ public class UsersServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Boolean isAdmin = false;
-        if (request.getParameterMap().containsKey("admin")) {
+        if ((Boolean)request.getSession().getAttribute("admin")) {
             isAdmin = (Boolean)request.getSession().getAttribute("admin");
         }
 
