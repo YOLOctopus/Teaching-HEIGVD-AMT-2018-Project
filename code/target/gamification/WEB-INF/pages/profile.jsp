@@ -1,3 +1,10 @@
+<%--
+    Document   : profile
+    Created on : 28.10.2018
+    Author     : Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+    Goal       : Profile page
+--%>
+
 <%@include file="includes/header.jsp" %>
 
 <h1 class="d-inline">Profile</h1>

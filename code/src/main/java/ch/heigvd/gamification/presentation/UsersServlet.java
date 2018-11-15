@@ -1,3 +1,10 @@
+/**
+ * @document UsersServlet
+ * @date 28.10.2018
+ * @author Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+ * @Goal Process requests for users list.
+ */
+
 package ch.heigvd.gamification.presentation;
 
 import ch.heigvd.gamification.business.EmailSender;
@@ -30,7 +37,7 @@ public class UsersServlet extends HttpServlet {
     EmailSender emailSender;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameterMap().containsKey("reset") || request.getParameterMap().containsKey("setactive")) {
+        if (request.getParameterMap().containsKey("reset") || request.getParameterMap().containsKey("setactive") || request.getParameterMap().containsKey("delete")) {
             String[] selectedUsers = request.getParameterValues("users");
             if (selectedUsers != null) {
                 for (String userId : selectedUsers) {

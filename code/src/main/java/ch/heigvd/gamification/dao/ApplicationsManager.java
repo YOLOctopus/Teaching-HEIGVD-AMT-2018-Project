@@ -1,3 +1,10 @@
+/**
+ * @document ApplicationsManager
+ * @date 28.10.2018
+ * @author Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+ * @Goal Acts as a link between the DB table application and the web application
+ */
+
 package ch.heigvd.gamification.dao;
 
 import ch.heigvd.gamification.model.Application;

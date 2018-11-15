@@ -1,3 +1,10 @@
+/**
+ * @document NewApplicationServlet
+ * @date 28.10.2018
+ * @author Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+ * @Goal Process requests for the creation of a new application
+ */
+
 package ch.heigvd.gamification.presentation;
 
 import ch.heigvd.gamification.dao.ApplicationsManagerLocal;
