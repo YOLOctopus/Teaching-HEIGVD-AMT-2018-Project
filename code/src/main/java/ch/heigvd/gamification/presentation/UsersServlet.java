@@ -1,8 +1,10 @@
 package ch.heigvd.gamification.presentation;
 
 import ch.heigvd.gamification.business.EmailSender;
+import ch.heigvd.gamification.dao.ApplicationsManagerLocal;
 import ch.heigvd.gamification.dao.BusinessDomainEntityNotFoundException;
 import ch.heigvd.gamification.dao.UsersManagerLocal;
+import ch.heigvd.gamification.model.Application;
 import ch.heigvd.gamification.model.User;
 
 import javax.ejb.EJB;
@@ -22,6 +24,9 @@ public class UsersServlet extends HttpServlet {
     UsersManagerLocal usersManager;
 
     @EJB
+    ApplicationsManagerLocal applicationsManager;
+
+    @EJB
     EmailSender emailSender;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,6 +40,7 @@ public class UsersServlet extends HttpServlet {
                         user = usersManager.findById(id);
                     } catch (BusinessDomainEntityNotFoundException e) {
                         //TODO: log
+                        request.setAttribute("info", "Unable to find a user");
                     }
                     if (request.getParameterMap().containsKey("reset")) {
                         String newPassword = UUID.randomUUID().toString();
@@ -42,23 +48,46 @@ public class UsersServlet extends HttpServlet {
                         user.setMustResetPassword(true);
                         try {
                             usersManager.update(user);
+                            request.setAttribute("info", "Operation successfully executed");
                         } catch (BusinessDomainEntityNotFoundException e) {
                             //TODO: log
+                            request.setAttribute("info", "There was a problem while during the update");
                         }
                         try {
                             emailSender.sendEmail("Your password has been reset",
                                     user.getEmail(),
                                     user.getFirstName() + " " + user.getLastName(),
                                     "Your password has been reset by an administrator. Use this password to log in. You will then be asked to change it. New password : " + newPassword);
+                            request.setAttribute("info", "Operation successfully executed");
                         } catch (MessagingException e) {
                             //TODO: log
+                            request.setAttribute("info", "Mail couldn't be sent");
                         }
                     } else if (request.getParameterMap().containsKey("setactive")) {
                         user.setActive(!user.isActive());
                         try {
                             usersManager.update(user);
+                            request.setAttribute("info", "Operation successfully executed");
                         } catch (BusinessDomainEntityNotFoundException e) {
                             //TODO: log
+                            request.setAttribute("info", "There was a problem while during the update");
+                        }
+                    } else if (request.getParameterMap().containsKey("delete")) {
+                        for (Application application : user.getApplications()) {
+                            try {
+                                applicationsManager.delete(application);
+                            } catch (BusinessDomainEntityNotFoundException e) {
+                                //TODO: log
+                                request.setAttribute("info", "There was a problem while deleting an application");
+                            }
+                        }
+
+                        try {
+                            usersManager.delete(user);
+                            request.setAttribute("info", "Operation successfully executed");
+                        } catch (BusinessDomainEntityNotFoundException e) {
+                            //TODO: log
+                            request.setAttribute("info", "There was a problem while deleting a user");
                         }
                     }
                 }
