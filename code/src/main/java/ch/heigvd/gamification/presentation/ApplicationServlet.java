@@ -1,3 +1,10 @@
+/**
+ * @document ApplicationServlet
+ * @date 28.10.2018
+ * @author Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+ * @Goal Process requests to display a single application and its properties
+ */
+
 package ch.heigvd.gamification.presentation;
 
 import ch.heigvd.gamification.dao.ApplicationsManagerLocal;
@@ -11,9 +18,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "ApplicationServlet")
 public class ApplicationServlet extends HttpServlet {
+
+    private static final Logger LOG = Logger.getLogger(ApplicationServlet.class.getName());
+
     @EJB
     ApplicationsManagerLocal applicationsManager;
 
@@ -27,14 +39,14 @@ public class ApplicationServlet extends HttpServlet {
         try {
             application = applicationsManager.findById(id);
         } catch (BusinessDomainEntityNotFoundException e) {
-            //TODO: log
+            LOG.log(Level.SEVERE, e.getMessage(), e);
         }
         application.setName(name);
         application.setDescription(description);
         try {
             applicationsManager.update(application);
         } catch (BusinessDomainEntityNotFoundException e) {
-            //TODO: log
+            LOG.log(Level.SEVERE, e.getMessage(), e);
         }
         request.setAttribute("success", true);
         request.setAttribute("id", application.getId());
@@ -48,7 +60,7 @@ public class ApplicationServlet extends HttpServlet {
         try {
             application = applicationsManager.findById(idApplication);
         } catch (BusinessDomainEntityNotFoundException e) {
-            //TODO: log
+            LOG.log(Level.SEVERE, e.getMessage(), e);
         }
         request.setAttribute("application", application);
         request.getRequestDispatcher("/WEB-INF/pages/application.jsp").forward(request, response);

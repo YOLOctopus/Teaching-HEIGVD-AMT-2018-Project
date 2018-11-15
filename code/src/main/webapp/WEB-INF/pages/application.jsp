@@ -1,3 +1,10 @@
+<%--
+    Document   : application
+    Created on : 28.10.2018
+    Author     : Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+    Goal       : This page is used to see and change an application details
+--%>
+
 <%@include file="includes/header.jsp" %>
 
 <c:if test="${success}">

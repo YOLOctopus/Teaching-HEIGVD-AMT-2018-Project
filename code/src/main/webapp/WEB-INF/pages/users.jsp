@@ -1,6 +1,19 @@
+<%--
+    Document   : users
+    Created on : 28.10.2018
+    Author     : Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+    Goal       : Show users list. Only an administrator can access this page.
+--%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@include file="includes/header.jsp" %>
+
+<c:if test="${not empty info}">
+    <div class="alert alert-warning" role="alert">
+        ${info}
+    </div>
+</c:if>
 
 <div class="clearfix mb-2">
     <h1 class="d-inline mb-2">Users</h1>
@@ -81,6 +94,8 @@
         </nav>
     </c:if>
     <input type="submit" class="btn btn-danger" name="reset" value="Reset password">
+    <input type="submit" class="btn btn-danger" name="delete" value="Delete users">
     <input type="submit" class="btn btn-warning" name="setactive" value="Toggle active">
 </form>
+
 <%@include file="includes/footer.jsp" %>

@@ -1,3 +1,10 @@
+/**
+ * @document RegistrationServlet
+ * @date 28.10.2018
+ * @author Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+ * @Goal Process requests for the registration of a user
+ */
+
 package ch.heigvd.gamification.presentation;
 
 import ch.heigvd.gamification.business.EmailSender;
@@ -17,9 +24,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
+
+    private static final Logger LOG = Logger.getLogger(RegistrationServlet.class.getName());
+
     @EJB
     UsersManagerLocal usersManager;
 
@@ -48,7 +60,7 @@ public class RegistrationServlet extends HttpServlet {
             if (!registerConfirmation.validEmail(email))
                 errors.add("Invalid email");
         } catch (BusinessDomainEntityNotFoundException e) {
-            //TODO: log
+            LOG.log(Level.SEVERE, e.getMessage(), e);
         }
         if (!registerConfirmation.validPassword(pwd))
             errors.add("invalid password");
@@ -65,7 +77,7 @@ public class RegistrationServlet extends HttpServlet {
                         user.getEmail(),
                         user.getFirstName() + " " + user.getLastName(), "Please follow this link to activate your account : http://localhost:8080/gamification/pages/accountactivation?token=" + userToken.getToken());
             } catch (MessagingException e) {
-                //TODO: log
+                LOG.log(Level.SEVERE, e.getMessage(), e);
             }
             request.getRequestDispatcher("/WEB-INF/pages/registerconfirmation.jsp").forward(request, response);
         } else {

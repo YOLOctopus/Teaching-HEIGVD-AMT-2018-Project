@@ -1,3 +1,10 @@
+/**
+ * @document LogoutServlet
+ * @date 28.10.2018
+ * @author Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+ * @Goal Process requests for user logout
+ */
+
 package ch.heigvd.gamification.presentation;
 
 import javax.servlet.ServletException;

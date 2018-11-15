@@ -1,3 +1,10 @@
+/**
+ * @document LoginServlet
+ * @date 28.10.2018
+ * @author Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+ * @Goal Process requests for user login
+ */
+
 package ch.heigvd.gamification.presentation;
 
 import ch.heigvd.gamification.business.LoginConfirmation;
@@ -11,9 +18,14 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "LoginServlet")
 public class LoginServlet extends HttpServlet {
+
+    private static final Logger LOG = Logger.getLogger(LoginServlet.class.getName());
+
     @EJB
     LoginConfirmation loginConfirmation;
 
@@ -48,8 +60,7 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
             }
         } catch (BusinessDomainEntityNotFoundException e) {
-            //TODO: log
-
+            LOG.log(Level.SEVERE, e.getMessage(), e);
         }
     }
 

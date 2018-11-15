@@ -1,3 +1,10 @@
+<%--
+    Document   : forgotpassword
+    Created on : 28.10.2018
+    Author     : Samuel Mayor, Alexandra Korukova, Pierre-Samuel Rochat and Arnold von Bauer Gauss
+    Goal       : This page asks for an email address then send a mail in order to change the password
+--%>
+
 <%@include file="includes/header.jsp" %>
 
 <c:choose>
