@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
                     request.setAttribute("error", "Please reset your password before you can log in.");
                     request.getRequestDispatcher("/WEB-INF/pages/passwordreset.jsp").forward(request, response);
                 } else if (!user.isActive()) {
-                    request.setAttribute("error", "Your account has been suspended. Please contact an administrator if you don't know the reason behind it.");
+                    request.setAttribute("error", "Your account is inactive. Please check your mails or contact an administrator.");
                     request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
                 } else {
                     HttpSession session = request.getSession();
