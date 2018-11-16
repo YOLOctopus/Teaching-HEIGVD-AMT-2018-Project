@@ -31,8 +31,10 @@
         <input class="form-control" type="text" id="apisecret" value="${application.getApiSecret()}" readonly>
     </div>
     <input type="hidden" name="id" value="${application.getId()}">
-    <button type="submit" class="btn btn-primary">Save changes</button>
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#alertMessage">Delete application</button>
+    <div class="clearfix">
+        <button type="submit" class="btn btn-sm btn-primary mr-2" id="save-changes">Save changes</button>
+        <button type="button" class="btn btn-sm btn-danger float-right" data-toggle="modal" data-target="#alertMessage" id="delete-app">Delete application</button>
+    </div>
 </form>
 
 <div class="modal fade" id="alertMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -40,7 +42,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Are you sure?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="popup-close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -48,9 +50,9 @@
                 This action cannot be undone.
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="popup-cancel">Cancel</button>
                 <form action="pages/applications" method="post">
-                    <button type="submit" class="btn btn-danger" name="delete" value="${application.getId()}">Delete</button>
+                    <button type="submit" class="btn btn-danger" name="delete" value="${application.getId()}" id="popup-delete">Delete</button>
                 </form>
             </div>
         </div>

@@ -23,7 +23,7 @@
 
 <div class="clearfix mb-2">
     <form class="form-inline d-inline float-left" method="get" action="pages/users">
-        <input name="query" class="form-control form-control-sm w-100" type="text" placeholder="Search" aria-label="Search">
+        <input name="query" class="form-control form-control-sm w-100" type="text" placeholder="Search" aria-label="Search" id="search">
         <i class="fa fa-search" aria-hidden="true"></i>
     </form>
 
@@ -32,10 +32,10 @@
             Users per page
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="pages/users?pagesize=5">5</a>
-            <a class="dropdown-item" href="pages/users?pagesize=10">10</a>
-            <a class="dropdown-item" href="pages/users?pagesize=20">20</a>
-            <a class="dropdown-item" href="pages/users?pagesize=50">50</a>
+            <a class="dropdown-item" href="pages/users?pagesize=5" id="pagesize-5">5</a>
+            <a class="dropdown-item" href="pages/users?pagesize=10" id="pagesize-10">10</a>
+            <a class="dropdown-item" href="pages/users?pagesize=20" id="pagesize-20">20</a>
+            <a class="dropdown-item" href="pages/users?pagesize=50" id="pagesize-50">50</a>
         </div>
     </div>
 </div>
@@ -49,7 +49,7 @@
                             <span>${client.getFirstName()} ${client.getLastName()}</span>
                         </a>
                         <div class="form-check d-inline float-right">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="users" value="${client.getId()}">
+                            <input type="checkbox" class="form-check-input" id="${client.getId()}" name="users" value="${client.getId()}">
                         </div>
                     </div>
                     <div class="list-subtitle">
@@ -65,7 +65,7 @@
             <ul class="pagination pagination-sm justify-content-center mt-2">
                 <c:choose>
                     <c:when test="${page > 0}">
-                        <li class="page-item"><a class="page-link" href="pages/users?page=${page-1}&pagesize=${pageSize}">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="pages/users?page=${page-1}&pagesize=${pageSize}" id="previous">Previous</a></li>
                     </c:when>
                     <c:otherwise>
                         <li class="page-item disabled"><a class="page-link" href="pages/users?page=${page-1}&pagesize=${pageSize}">Previous</a></li>
@@ -93,9 +93,11 @@
             </ul>
         </nav>
     </c:if>
-    <input type="submit" class="btn btn-danger" name="reset" value="Reset password">
-    <input type="submit" class="btn btn-danger" name="delete" value="Delete users">
-    <input type="submit" class="btn btn-warning" name="setactive" value="Toggle active">
+    <div class="mt-3 clearfix">
+        <button type="submit" class="btn btn-sm btn-primary mr-2" name="setactive">Toggle active</button>
+        <button type="submit" class="btn btn-sm btn-primary mr-2" name="reset">Reset password</button>
+        <button type="submit" class="btn btn-sm btn-danger float-right" name="delete">Delete users</button>
+    </div>
 </form>
 
 <%@include file="includes/footer.jsp" %>
