@@ -3,7 +3,7 @@ Feature('First Test')
 
 const firstname = 'john'
 const lastname = 'doe'
-const email = 'john9@doe.com'
+const email = 'john11@doe.com'
 const password = '1234567'
 const appName = `${email}-app`
 
