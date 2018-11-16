@@ -9,7 +9,7 @@ Once connected, the user will be redirected to the gamification home page. He/sh
 ![](img/homepage.png)  
 
 * __Registration__  
-To create a new account, the user has to enter his/her first and last names, the email address and the password. Once the Register button clicked and the fields verifications performed, an account activation email is sent to the user. The user can activate the account by clicking the link received in the email.
+To create a new account, the user has to enter his/her first and last names, the email address and the password. Once the `Register` button clicked and the fields verifications performed, an account activation email is sent to the user. The user can activate the account by clicking the link received in the email.
 ![](img/registration.png)  
 
 * __UI__  
@@ -23,11 +23,12 @@ Once logged in, the user can view his/her applications and the profile.
  ![](img/new-app.png)
 
  User's profile page:   
- ![](img/user-profile.png)
+ ![](img/user-profile.png)  
+ The user can reset his/her password by clicking the `Reset password` button. In this case, the user is redirected to the Reset Password where he is asked to enter the new password.
 * __Administration console__   
 Besides the profile and application pages, the administrator is able to view the list of registered users and all of their applications.  
 ![](img/admin-users.png)  
-The administrator can also bring a user active, reset the user's password and delete a user.
+The administrator can also bring a user (or multiple users, by activating the ckeckboxes) active, reset the user's password and delete a user.
 
 
 ### Implementation  
