@@ -42,5 +42,5 @@ __Notes:__
 * We used the SQL database to store the data and JDBC API to access it.
 
 
-### Tests  
+### Tests     
 Functional tests, as long as non functional pagination transactions tests have been performed on our project. The test reports can be found in [TESTING_NON_FUNCTIONAL_TRANSACTION](https://github.com/YOLOctopus/Teaching-HEIGVD-AMT-2018-Project/tree/master/TESTING_NON_FUNCTIONAL_TRANSACTIONS), [TESTING_NON_FUNCTIONAL_PAGINATION](https://github.com/YOLOctopus/Teaching-HEIGVD-AMT-2018-Project/tree/master/TESTING_NON_FUNCTIONAL_PAGINATION) and [TESTING_FUNCTIONAL.md](https://github.com/YOLOctopus/Teaching-HEIGVD-AMT-2018-Project/blob/master/TESTING_FUNCTIONAL.md). The tests implementation can be found in the `gamification-test-transaction`, `testing-non-functional-pagination` and `gamification-test-functional` branches of the project.
