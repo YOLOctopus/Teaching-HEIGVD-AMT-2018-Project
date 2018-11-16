@@ -60,7 +60,7 @@
         </div>
     </c:if>
 
-    <c:if test="${fn:length(users) >= pageSize}">
+    <c:if test="${totalSize > pageSize}">
         <nav>
             <ul class="pagination pagination-sm justify-content-center mt-2">
                 <c:choose>
@@ -72,7 +72,7 @@
                     </c:otherwise>
                 </c:choose>
 
-                <c:forEach begin="${minPage}" end="${maxPage}" var="i">
+                <c:forEach begin="${minPage}" end="${maxPage+1}" var="i">
                     <c:choose>
                         <c:when test="${i == page}">
                             <li class="page-item active"><a class="page-link" href="pages/users?page=${i}&pagesize=${pageSize}">${i+1}</a></li>
@@ -83,8 +83,8 @@
                     </c:choose>
                 </c:forEach>
                 <c:choose>
-                    <c:when test="${page < maxPage}">
-                        <li class="page-item"><a class="page-link" href="pages/users?page=${page+1}&pagesize=${pageSize}" id="next">Next</a></li>
+                    <c:when test="${page < maxPage+1}">
+                        <li class="page-item"><a class="page-link" href="pages/users?page=${page+1}&pagesize=${pageSize}">Next</a></li>
                     </c:when>
                     <c:otherwise>
                         <li class="page-item disabled"><a class="page-link" href="pages/users?page=${page+1}&pagesize=${pageSize}">Next</a></li>

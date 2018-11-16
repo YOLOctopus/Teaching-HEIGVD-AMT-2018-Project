@@ -73,7 +73,7 @@ public class ApplicationsServlet extends HttpServlet {
                 pageSize = Integer.parseInt(request.getParameter("pagesize"));
             }
 
-            Long totalSize = applicationsManager.count();
+            int totalSize = applicationsManager.findByUser(user).size();
             int minPage = Math.max(0, page - MAX_PAGINATION_PAGE / 2);
             int maxPage = (int) Math.min(page + MAX_PAGINATION_PAGE / 2 - 1, totalSize / pageSize - 1);
             applications = applicationsManager.findByUserByPage(user, pageSize, page);
