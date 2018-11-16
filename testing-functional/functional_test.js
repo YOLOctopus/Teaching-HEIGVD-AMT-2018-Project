@@ -3,13 +3,19 @@ Feature('First Test')
 
 const firstname = 'john'
 const lastname = 'doe'
-const email = 'john@doe.com'
+const email = 'john9@doe.com'
 const password = '1234567'
+const appName = `${email}-app`
 
 Scenario('Register', (I, registerPage) => {
-  registerPage.sendForm(firstname, lastname, email, password)
+  registerPage.registerUser(firstname, lastname, email, password)
 })
 
-Scenario('Login', (I, loginPage) => {
-  loginPage.sendForm(email, password)
+Scenario('Applications', (I, loginPage, applicationsPage) => {
+  loginPage.loginUser(email, password)
+  applicationsPage.create25Apps(appName)
+  applicationsPage.browseApps5()
+  applicationsPage.browseApps10()
+  applicationsPage.browseApps20()
+  applicationsPage.browseApps50()
 })

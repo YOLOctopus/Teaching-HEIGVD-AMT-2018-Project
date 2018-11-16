@@ -16,7 +16,10 @@
   "include": {
     "I": "./steps_file.js",
     "registerPage": "./pages/register.js",
-    "loginPage": "./pages/login.js"
+    "loginPage": "./pages/login.js",
+    "applicationsPage": "./pages/applications.js",
+    "usersPage": "./pages/users.js",
+    "profilePage": "./pages/profile.js"
   },
   "mocha": {},
   "bootstrap": false,

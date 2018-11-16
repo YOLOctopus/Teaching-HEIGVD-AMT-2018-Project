@@ -12,7 +12,8 @@
             ${error}
     </div>
 </c:if>
-<h2>Login</h2>
+<h1>Login</h1>
+<hr/>
 <form method="post" action="./pages/login">
     <div class="form-group">
         <label for="email">Email</label>

@@ -4,7 +4,7 @@
   "description": "Execute automated functional tests.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/codeceptjs run --steps"
+    "test": "./node_modules/.bin/codeceptjs run"
   },
   "author": "",
   "license": "ISC",

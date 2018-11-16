@@ -17,7 +17,7 @@
         <textarea class="form-control" id="appdesc" rows="5" name="description" id="description">${application.getDescription()}</textarea>
     </div>
     <input type="hidden" name="id" value="${id}">
-    <button type="submit" class="btn btn-primary" id="save-btn">Save</button>
+    <button type="submit" class="btn btn-sm btn-primary px-5" id="save-btn">Save</button>
 </form>
 
 <%@include file="includes/footer.jsp" %>
