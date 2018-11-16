@@ -51,13 +51,7 @@ public class UsersServlet extends HttpServlet {
                         String newPassword = UUID.randomUUID().toString();
                         user.setPassword(newPassword);
                         user.setMustResetPassword(true);
-                        try {
-                            usersManager.update(user);
-                            request.setAttribute("info", "Operation successfully executed");
-                        } catch (BusinessDomainEntityNotFoundException e) {
-                            LOG.log(Level.SEVERE, e.getMessage(), e);
-                            request.setAttribute("info", "There was a problem during the update");
-                        }
+                        updateUser(request, user);
                         try {
                             emailSender.sendEmail("Your password has been reset",
                                     user.getEmail(),
@@ -70,13 +64,7 @@ public class UsersServlet extends HttpServlet {
                         }
                     } else if (request.getParameterMap().containsKey("setactive")) {
                         user.setActive(!user.isActive());
-                        try {
-                            usersManager.update(user);
-                            request.setAttribute("info", "Operation successfully executed");
-                        } catch (BusinessDomainEntityNotFoundException e) {
-                            LOG.log(Level.SEVERE, e.getMessage(), e);
-                            request.setAttribute("info", "There was a problem during the update");
-                        }
+                        updateUser(request, user);
                     } else if (request.getParameterMap().containsKey("delete")) {
                         for (Application application : user.getApplications()) {
                             try {
@@ -100,6 +88,16 @@ public class UsersServlet extends HttpServlet {
         }
         getUsersList(request);
         request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
+    }
+
+    private void updateUser(HttpServletRequest request, User user) {
+        try {
+            usersManager.update(user);
+            request.setAttribute("info", "Operation successfully executed");
+        } catch (BusinessDomainEntityNotFoundException e) {
+            LOG.log(Level.SEVERE, e.getMessage(), e);
+            request.setAttribute("info", "There was a problem during the update");
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

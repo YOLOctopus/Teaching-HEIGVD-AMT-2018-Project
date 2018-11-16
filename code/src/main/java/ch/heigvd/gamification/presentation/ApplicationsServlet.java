@@ -66,12 +66,13 @@ public class ApplicationsServlet extends HttpServlet {
                 pageSize = Integer.parseInt(request.getParameter("pagesize"));
             }
 
-            Long totalSize = applicationsManager.count();
+
+            List<Application> allApplications = applicationsManager.findByUser(user);
+            int totalSize = allApplications.size();
             int minPage = Math.max(0, page - MAX_PAGINATION_PAGE / 2);
             int maxPage = (int) Math.min(page + MAX_PAGINATION_PAGE / 2 - 1, totalSize / pageSize - 1);
-            List<Application> allApplications = applicationsManager.findByUser(user);
-            int firstIndex = (int) Math.min(page*pageSize, allApplications.size());
-            int lastIndex = (int) Math.min(firstIndex + pageSize, allApplications.size());
+            int firstIndex = (int) Math.min(page*pageSize, totalSize);
+            int lastIndex = (int) Math.min(firstIndex + pageSize, totalSize);
             applications = allApplications.subList(firstIndex, lastIndex);
             request.setAttribute("pageSize", pageSize);
             request.setAttribute("page", page);
