@@ -41,6 +41,3 @@ npm install
 # Open a new terminal
 npm run test
 ```
-
-## Introducing a bug
-
