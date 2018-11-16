@@ -1,9 +1,9 @@
-### Gamification - WP 1
+## Gamification - WP 1
 
-#### Launching  
+### Launching  
 To launch the application, the `docker-compose up --build` command has to be executed from the topology-project directory. The application will be run at `localhost:8080/gamification`. The database can be found at `localhost:8888` (_username:_ root, _password:_ root) in the phpMyAdmin interface. Payara server administration console can be found at `localhost:4848` (_username:_ admin, _password:_ admin).
 
-#### Overview  
+### Overview  
 Once connected, the user will be redirected to the gamification home page. He/she then can register or login to his/her account.  
 
 ![](img/homepage.png)  
@@ -13,11 +13,24 @@ To create a new account, the user has to enter his/her first and last names, the
 ![](img/registration.png)  
 
 * __UI__  
+Once logged in, the user can view his/her applications and the profile.  
+
+ User's applications page:
+ ![](img/user-applications.png)  
+ Five, ten, twenty or fifty applications can be displayed per page. If the user desires to add a new application, he/she must click the `New app` button and provide the name and the description of the new application.  
+
+ New application page:  
+ ![](img/new-app.png)
+
+ User's profile page:   
+ ![](img/user-profile.png)
 * __Administration console__   
-* __Reset password__    
+Besides the profile and application pages, the administrator is able to view the list of registered users and all of their applications.  
+![](img/admin-users.png)  
+The administrator can also bring a user active, reset the user's password and delete a user.
 
 
-#### Implementation  
+### Implementation  
 The project contains several packages:   
 * __business__ package represents the Business Tier  and is responsible of the business logic of the application. Typically, classes of this package verify the data entered by the user and send emails.  
 * __dao__ package contain Data Access classes which are responsible of retrieving data from the database. All the classes of this package extend the _GenericDAO_ class that implement the basic CRUD functionalities.  
@@ -29,5 +42,5 @@ __Notes:__
 * We used the SQL database to store the data and JDBC API to access it.
 
 
-#### Tests  
-Functional tests, as long as non functional pagination transactions tests have been performed on our project. The non functional test reports can be found in [TESTING_NON_FUNCTIONAL_TRANSACTION](https://github.com/YOLOctopus/Teaching-HEIGVD-AMT-2018-Project/tree/master/TESTING_NON_FUNCTIONAL_TRANSACTIONS) and [TESTING_NON_FUNCTIONAL_PAGINATION](https://github.com/YOLOctopus/Teaching-HEIGVD-AMT-2018-Project/tree/master/TESTING_NON_FUNCTIONAL_PAGINATION). The non functional tests implementation can be found in the `gamification-test-transaction` and `testing-non-functional-pagination` branches of the project.
+### Tests     
+Functional tests, as long as non functional pagination transactions tests have been performed on our project. The test reports can be found in [TESTING_NON_FUNCTIONAL_TRANSACTION](https://github.com/YOLOctopus/Teaching-HEIGVD-AMT-2018-Project/tree/master/TESTING_NON_FUNCTIONAL_TRANSACTIONS), [TESTING_NON_FUNCTIONAL_PAGINATION](https://github.com/YOLOctopus/Teaching-HEIGVD-AMT-2018-Project/tree/master/TESTING_NON_FUNCTIONAL_PAGINATION) and [TESTING_FUNCTIONAL.md](https://github.com/YOLOctopus/Teaching-HEIGVD-AMT-2018-Project/blob/master/TESTING_FUNCTIONAL.md). The tests implementation can be found in the `gamification-test-transaction`, `testing-non-functional-pagination` and `gamification-test-functional` branches of the project.
