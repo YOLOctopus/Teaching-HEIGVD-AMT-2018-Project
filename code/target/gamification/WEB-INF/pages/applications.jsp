@@ -9,8 +9,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@include file="includes/header.jsp" %>
 
+<c:if test="${empty user}">
+    <c:redirect url="/pages/login"/>
+</c:if>
+
 <c:if test="${not admin && idUser != id}">
-    <c:redirect url="home.jsp"/>
+    <c:redirect url="/pages/home"/>
 </c:if>
 
 <div class="clearfix mb-2">

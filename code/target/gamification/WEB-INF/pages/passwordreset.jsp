@@ -31,7 +31,7 @@
     </c:when>
     <c:when test="${success}">
         <div class="alert alert-success" role="alert">
-            Password successfully reset.
+            Password successfully reseted.
         </div>
     </c:when>
 </c:choose>
