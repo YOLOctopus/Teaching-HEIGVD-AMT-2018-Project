@@ -22,11 +22,13 @@ Scenario('Create application and browse pages with specific pages', (I, loginPag
   applicationsPage.browseApps50()
 })
 
-Scenario('Search app, delete app and search again', (I, loginPage, searchPage, applicationPage) => {
+Scenario('Search app, delete app and search again, logs out and try reaching applications', (I, loginPage, searchPage, applicationPage) => {
   loginPage.loginUser(email, password)
   searchPage.searchApps(`${appName}-10`, 1)
   applicationPage.deleteApp(`${email}-app-10`)
   searchPage.searchApps(`${appName}-10`, 0)
+  loginPage.logoutUser()
+  loginPage.redirectAccessApps()
 })
 
 Scenario('Reset account password', (I, loginPage, profilePage) => {

@@ -46,6 +46,10 @@ module.exports = {
   logoutUser() {
     I.click(this.header.logout)
   },
+  redirectAccessApps() {
+    I.click(this.header.apps)
+    I.see('Welcome to the gamification API', 'h1')
+  },
   forgotPassword(email, newPassword) {
     I.see('Welcome to the gamification API', 'h1')
     I.click(this.header.login)
@@ -61,5 +65,5 @@ module.exports = {
     I.fillField(this.fields.passwordRepeat, newPassword)
     I.click(this.action.submit)
     I.see('Password successfully reseted.')
-  }
+  },
 }
