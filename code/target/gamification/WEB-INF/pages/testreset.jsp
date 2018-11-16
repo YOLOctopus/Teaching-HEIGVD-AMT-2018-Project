@@ -1,0 +1,1 @@
+<a href="http://localhost:8080/gamification/pages/resetpassword?token=${token}" id="redirect">Redirect</a>

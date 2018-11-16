@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "UserTokenServlet")
-public class UserTokenServlet extends HttpServlet {
+@WebServlet(name = "TestActivationServlet")
+public class TestActivationServlet extends HttpServlet {
 
     @EJB
     UserTokenManagerLocal userTokenManager;
@@ -31,6 +31,6 @@ public class UserTokenServlet extends HttpServlet {
         User user = usersManager.findByEmail(email);
         String userToken = userTokenManager.findByUser(user).getToken();
         request.setAttribute("token", userToken);
-        request.getRequestDispatcher("/WEB-INF/pages/usertoken.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/testactivation.jsp").forward(request, response);
     }
 }

@@ -18,8 +18,9 @@
     "registerPage": "./pages/register.js",
     "loginPage": "./pages/login.js",
     "applicationsPage": "./pages/applications.js",
-    "usersPage": "./pages/users.js",
-    "profilePage": "./pages/profile.js"
+    "profilePage": "./pages/profile.js",
+    "searchPage": "./pages/search.js",
+    "applicationPage": "./pages/application.js"
   },
   "mocha": {},
   "bootstrap": false,

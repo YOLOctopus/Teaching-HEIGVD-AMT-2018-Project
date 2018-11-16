@@ -17,7 +17,9 @@ module.exports = {
     password: '#pwd'
   },
   action: {
-    login: '#login-btn'
+    login: '#login-btn',
+    forgotPassword: '#forgot-password-link',
+    sendMail: '#send-mail'
   },
 
   // introducing methods
@@ -36,5 +38,14 @@ module.exports = {
   loginAdmin(email, password) {
     this.loginUser(email, password)
     I.seeElement(this.header.users)
+  },
+  forgotPassword(email, password) {
+    I.see('Welcome to the gamification API', 'h1')
+    I.click(this.header.login)
+    I.see('Login', 'h1')
+    I.click(this.action.forgotPassword)
+    I.fillField(this.fields.email, email)
+    I.click(this.action.sendMail)
+    
   }
 }

@@ -57,8 +57,8 @@
         <servlet-class>ch.heigvd.gamification.presentation.ForgotPasswordServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UserTokenServlet</servlet-name>
-        <servlet-class>ch.heigvd.gamification.presentation.UserTokenServlet</servlet-class>
+        <servlet-name>TestActivationServlet</servlet-name>
+        <servlet-class>ch.heigvd.gamification.presentation.TestActivationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -113,7 +113,7 @@
         <url-pattern>/pages/forgotpassword</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UserTokenServlet</servlet-name>
-        <url-pattern>/pages/usertoken</url-pattern>
+        <servlet-name>TestActivationServlet</servlet-name>
+        <url-pattern>/pages/testactivation</url-pattern>
     </servlet-mapping>
 </web-app>

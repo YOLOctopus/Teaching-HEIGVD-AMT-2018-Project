@@ -39,7 +39,7 @@ module.exports = {
     I.click(this.action.register)
     I.waitForElement(this.divs.registerConfirmation)
     I.see('Thank you for registering. Please activate your account by clicking the link in the mail sent to the mail address you provided.')
-    I.amOnPage(`http://localhost:8080/gamification/pages/usertoken?email=${email}`)
+    I.amOnPage(`http://localhost:8080/gamification/pages/testactivation?email=${email}`)
     I.click(this.action.redirect)
     I.see('You have successfully activated your account. You can now log in.')
   }

@@ -14,6 +14,8 @@
                 ${error}
             </div>
         </c:if>
+        <h1>Reset Password</h1>
+        <hr/>
         <form action="pages/resetpassword" method="post">
             <div class="form-group">
                 <label for="newPassword">New password</label>

@@ -31,6 +31,7 @@ module.exports = {
   },
   elements: {
     appRow: '.list-group-item',
+    paginationItems: '.page-item',
   },
 
   create25Apps(appName) {
@@ -53,11 +54,12 @@ module.exports = {
     I.click(this.action.dropdown)
     I.waitForElement(this.action.ps5)
     I.click(this.action.ps5)
-    for(let i = 0; i < 5; i++) {
+    I.seeNumberOfElements(this.elements.paginationItems, 7)
+    for(let i = 0; i < 4; i++) {
       I.seeNumberOfElements(this.elements.appRow, 5)
       I.click(this.action.next)
     }
-    for(let i = 0; i < 5; i++) {
+    for(let i = 0; i < 4; i++) {
       I.click(this.action.previous)
       I.seeNumberOfElements(this.elements.appRow, 5)
     }
@@ -68,6 +70,7 @@ module.exports = {
     I.click(this.action.dropdown)
     I.waitForElement(this.action.ps10)
     I.click(this.action.ps10)
+    I.seeNumberOfElements(this.elements.paginationItems, 5)
     I.seeNumberOfElements(this.elements.appRow, 10)
     I.click(this.action.next)
     I.seeNumberOfElements(this.elements.appRow, 10)
@@ -84,6 +87,7 @@ module.exports = {
     I.click(this.action.dropdown)
     I.waitForElement(this.action.ps20)
     I.click(this.action.ps20)
+    I.seeNumberOfElements(this.elements.paginationItems, 4)
     I.seeNumberOfElements(this.elements.appRow, 20)
     I.click(this.action.next)
     I.seeNumberOfElements(this.elements.appRow, 5)
@@ -95,7 +99,8 @@ module.exports = {
     I.see('Applications', 'h1')
     I.click(this.action.dropdown)
     I.waitForElement(this.action.ps50)
-    I.click(this.action.ps20)
+    I.click(this.action.ps50)
+    I.seeNumberOfElements(this.elements.paginationItems, 0)
     I.seeNumberOfElements(this.elements.appRow, 25)
   }
 }
