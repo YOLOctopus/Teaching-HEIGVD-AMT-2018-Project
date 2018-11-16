@@ -24,7 +24,7 @@ Once logged in, the user can view his/her applications and the profile.
 
  User's profile page:   
  ![](img/user-profile.png)  
- The user can reset his/her password by clicking the `Reset password` button. In this case, the user is redirected to the Reset Password where he is asked to enter the new password.
+ The user can reset his/her password by clicking the `Reset password` button. In this case, the user is redirected to the Reset Password page, where he is asked to enter the new password.
 * __Administration console__   
 Besides the profile and application pages, the administrator is able to view the list of registered users and all of their applications.  
 ![](img/admin-users.png)  
