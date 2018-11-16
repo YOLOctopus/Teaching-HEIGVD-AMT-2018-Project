@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: db
--- Generation Time: Nov 14, 2018 at 08:20 AM
--- Server version: 5.7.23
--- PHP Version: 7.2.8
+-- Hôte : db
+-- Généré le :  ven. 16 nov. 2018 à 11:25
+-- Version du serveur :  5.7.23
+-- Version de PHP :  7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,14 +19,15 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `amtdb`
+-- Base de données :  `amtdb`
 --
-CREATE DATABASE IF NOT EXISTS `amtdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `amtdb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `amtdb`;
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `APPLICATION`
+-- Structure de la table `APPLICATION`
 --
 
 CREATE TABLE `APPLICATION` (
@@ -39,7 +40,7 @@ CREATE TABLE `APPLICATION` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `APPLICATION`
+-- Déchargement des données de la table `APPLICATION`
 --
 
 INSERT INTO `APPLICATION` (`ID`, `APIKEY`, `APISECRET`, `DESCRIPTION`, `NAME`, `USER_ID`) VALUES
@@ -109,8 +110,7 @@ INSERT INTO `APPLICATION` (`ID`, `APIKEY`, `APISECRET`, `DESCRIPTION`, `NAME`, `
 (170989, '170916', '170916', 'Test description170916', 'The test170916', 1),
 (171023, 'b5104239-281f-40c5-9a2c-aaa7cb867f91', '7b8bf7c2-27ad-4d17-be96-e6450f27b2e2', 'You can browse moving images in a multi colored theme', '90d02eb6-630d-45fe-bd26-cfba9337c3c9', 1),
 (171024, '7f93f8fa-dd66-44b2-aa7e-ae81c9e77db1', '13328e4b-4d30-4066-bf84-24387c576643', 'You can browse moving images in a multi colored theme', 'c04f367b-6af7-47d9-a206-6e5b06f64e2c', 1),
-(171025, '20aa669d-ec93-4256-856d-2d2742b6cd71', '91a88793-d8e2-4aa4-8ce1-7b416fe4e471', 'You can browse moving images in a multi colored theme', '136f4b2b-9a91-48ae-988d-054710d8c9db', 1);
-INSERT INTO `APPLICATION` (`ID`, `APIKEY`, `APISECRET`, `DESCRIPTION`, `NAME`, `USER_ID`) VALUES
+(171025, '20aa669d-ec93-4256-856d-2d2742b6cd71', '91a88793-d8e2-4aa4-8ce1-7b416fe4e471', 'You can browse moving images in a multi colored theme', '136f4b2b-9a91-48ae-988d-054710d8c9db', 1),
 (171026, '7d17c9c8-ff06-4357-88da-d591b159fa18', '1a61f1ab-5009-4ab2-ad8e-44f53a99106b', 'You can browse moving images in a multi colored theme', '7554df2c-e40f-49ee-b5d6-f5af374574df', 1),
 (171027, 'a34075e1-564c-4875-a346-aa7f60e1eebb', 'dedcd426-5523-40fc-90c2-7a2ad4660514', 'You can browse moving images in a multi colored theme', '49031423-dbb3-48df-a642-a5cf279a0641', 1),
 (171028, '7bdf7b87-63fc-4060-a3d9-198b78b8e6c2', '7c84a657-e4c8-45a7-8de6-72394569ab5e', 'You can browse moving images in a multi colored theme', 'd68fd58d-b8fc-474d-a7b8-97e4685ba9d1', 1),
@@ -124,7 +124,7 @@ INSERT INTO `APPLICATION` (`ID`, `APIKEY`, `APISECRET`, `DESCRIPTION`, `NAME`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `USER`
+-- Structure de la table `USER`
 --
 
 CREATE TABLE `USER` (
@@ -139,7 +139,7 @@ CREATE TABLE `USER` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `USER`
+-- Déchargement des données de la table `USER`
 --
 
 INSERT INTO `USER` (`ID`, `ACTIVE`, `ADMIN`, `EMAIL`, `FIRSTNAME`, `LASTNAME`, `MUSTRESETPASSWORD`, `PASSWORD`) VALUES
@@ -177,7 +177,7 @@ INSERT INTO `USER` (`ID`, `ACTIVE`, `ADMIN`, `EMAIL`, `FIRSTNAME`, `LASTNAME`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `USERTOKEN`
+-- Structure de la table `USERTOKEN`
 --
 
 CREATE TABLE `USERTOKEN` (
@@ -187,19 +187,47 @@ CREATE TABLE `USERTOKEN` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `USERTOKEN`
+-- Déchargement des données de la table `USERTOKEN`
 --
 
 INSERT INTO `USERTOKEN` (`ID`, `TOKEN`, `USER_ID`) VALUES
 (1, 'ec216005-d9f0-4841-b62d-17bcb2508a37', 25),
-(2, '1e029bd7-ef62-44ec-9040-e756af5c36a9', 26);
+(2, '1e029bd7-ef62-44ec-9040-e756af5c36a9', 26),
+(3, 'asd', 1),
+(4, 'asd2', 2),
+(5, 'asd3', 3),
+(6, 'asd4', 4),
+(7, 'asd5', 5),
+(8, 'asd6', 6),
+(9, 'asd7', 7),
+(10, 'asd8', 8),
+(11, 'asd9', 9),
+(12, 'asd10', 10),
+(13, 'asd11', 11),
+(14, 'asd12', 12),
+(15, 'asd13', 13),
+(16, 'asd14', 14),
+(17, 'asd15', 15),
+(18, 'asd16', 16),
+(19, 'asd17', 17),
+(20, 'asd18', 18),
+(21, 'asd19', 19),
+(22, 'asd20', 20),
+(23, 'asd21', 21),
+(24, 'asd22', 22),
+(25, 'asd23', 23),
+(26, 'asd24', 24),
+(27, 'asd61', 61),
+(28, 'asd62', 62),
+(29, 'asd63', 63),
+(30, 'asd64', 64);
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `APPLICATION`
+-- Index pour la table `APPLICATION`
 --
 ALTER TABLE `APPLICATION`
   ADD PRIMARY KEY (`ID`),
@@ -209,53 +237,53 @@ ALTER TABLE `APPLICATION`
   ADD KEY `FK_APPLICATION_USER_ID` (`USER_ID`);
 
 --
--- Indexes for table `USER`
+-- Index pour la table `USER`
 --
 ALTER TABLE `USER`
   ADD PRIMARY KEY (`ID`),
   ADD UNIQUE KEY `EMAIL` (`EMAIL`);
 
 --
--- Indexes for table `USERTOKEN`
+-- Index pour la table `USERTOKEN`
 --
 ALTER TABLE `USERTOKEN`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `FK_USERTOKEN_USER_ID` (`USER_ID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `APPLICATION`
+-- AUTO_INCREMENT pour la table `APPLICATION`
 --
 ALTER TABLE `APPLICATION`
   MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171035;
 
 --
--- AUTO_INCREMENT for table `USER`
+-- AUTO_INCREMENT pour la table `USER`
 --
 ALTER TABLE `USER`
   MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
--- AUTO_INCREMENT for table `USERTOKEN`
+-- AUTO_INCREMENT pour la table `USERTOKEN`
 --
 ALTER TABLE `USERTOKEN`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `APPLICATION`
+-- Contraintes pour la table `APPLICATION`
 --
 ALTER TABLE `APPLICATION`
   ADD CONSTRAINT `FK_APPLICATION_USER_ID` FOREIGN KEY (`USER_ID`) REFERENCES `USER` (`ID`);
 
 --
--- Constraints for table `USERTOKEN`
+-- Contraintes pour la table `USERTOKEN`
 --
 ALTER TABLE `USERTOKEN`
   ADD CONSTRAINT `FK_USERTOKEN_USER_ID` FOREIGN KEY (`USER_ID`) REFERENCES `USER` (`ID`);
