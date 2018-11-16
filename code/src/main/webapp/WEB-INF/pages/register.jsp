@@ -14,7 +14,8 @@
         </div>
     </c:forEach>
 </c:if>
-<h2>Register</h2>
+<h1>Register</h1>
+<hr/>
 <form method="post" action="./pages/register">
     <div class="form-group">
         <label for="firstname">First name</label>

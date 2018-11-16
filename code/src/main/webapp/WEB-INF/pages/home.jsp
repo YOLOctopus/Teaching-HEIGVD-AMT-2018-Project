@@ -9,7 +9,7 @@
 <%@include file="includes/header.jsp" %>
 
 <h1>Welcome to the gamification API</h1>
-<hr>
+<hr/>
 <c:if test="${admin}">
     <div class="alert alert-warning" role="alert">
         You are logged in as an administrator
