@@ -41,3 +41,7 @@ npm install
 # Open a new terminal
 npm run test
 ```
+
+## Introducing a bug
+
+When one/several tests fail, a screenshot that shows the failing step is automatically saved in `testing-functional/output/`.
