@@ -62,6 +62,12 @@
         </div>
     </c:if>
 
+    <div class="mt-3 clearfix">
+        <button type="submit" class="btn btn-sm btn-primary mr-2" name="setactive">Toggle active</button>
+        <button type="submit" class="btn btn-sm btn-primary mr-2" name="reset">Reset password</button>
+        <button type="submit" class="btn btn-sm btn-danger float-right" name="delete">Delete users</button>
+    </div>
+
     <c:if test="${totalSize > pageSize}">
         <nav>
             <ul class="pagination pagination-sm justify-content-center mt-2">
@@ -95,11 +101,6 @@
             </ul>
         </nav>
     </c:if>
-    <div class="mt-3 clearfix">
-        <button type="submit" class="btn btn-sm btn-primary mr-2" name="setactive">Toggle active</button>
-        <button type="submit" class="btn btn-sm btn-primary mr-2" name="reset">Reset password</button>
-        <button type="submit" class="btn btn-sm btn-danger float-right" name="delete">Delete users</button>
-    </div>
 </form>
 
 <%@include file="includes/footer.jsp" %>

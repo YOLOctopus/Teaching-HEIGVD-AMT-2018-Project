@@ -23,7 +23,7 @@
         <label for="pwd">Password</label>
         <input type="password" class="form-control" placeholder="Enter Password" name="pwd" id="pwd">
     </div>
-    <a id="forgot-password-link" href="pages/forgotpassword">Forgot password?</a>
-    <button type="submit" class="btn btn-primary" id="login-btn">Login</button>
+    <button type="submit" class="btn btn-sm px-3 btn-primary" id="login-btn">Login</button>
+    <a class="ml-2" id="forgot-password-link" href="pages/forgotpassword">Forgot password?</a>
 </form>
 <%@include file="includes/footer.jsp" %>
