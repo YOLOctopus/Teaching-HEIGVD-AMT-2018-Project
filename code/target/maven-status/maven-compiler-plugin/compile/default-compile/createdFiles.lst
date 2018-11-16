@@ -1,7 +1,7 @@
 ch/heigvd/gamification/presentation/PasswordResetServlet.class
 ch/heigvd/gamification/model/Application.class
-ch/heigvd/gamification/dao/BusinessDomainEntityNotFoundException.class
 ch/heigvd/gamification/business/EmailSender.class
+ch/heigvd/gamification/dao/BusinessDomainEntityNotFoundException.class
 ch/heigvd/gamification/presentation/HomeServlet.class
 ch/heigvd/gamification/model/AbstractDomainModelEntity.class
 ch/heigvd/gamification/presentation/ApplicationServlet.class
@@ -19,8 +19,8 @@ ch/heigvd/gamification/dao/ApplicationsManager.class
 ch/heigvd/gamification/presentation/RegistrationServlet.class
 ch/heigvd/gamification/presentation/NewApplicationServlet.class
 ch/heigvd/gamification/dao/UsersManager.class
-ch/heigvd/gamification/presentation/ApplicationsServlet.class
 ch/heigvd/gamification/business/RegisterConfirmation.class
+ch/heigvd/gamification/presentation/ApplicationsServlet.class
 ch/heigvd/gamification/presentation/RegisterConfirmationServlet.class
 ch/heigvd/gamification/presentation/AccountActivationServlet.class
 ch/heigvd/gamification/presentation/UsersServlet.class
