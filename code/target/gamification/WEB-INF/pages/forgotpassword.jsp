@@ -7,6 +7,9 @@
 
 <%@include file="includes/header.jsp" %>
 
+<h1>Forgot Password</h1>
+<hr/>
+
 <c:choose>
     <c:when test="${not empty email}">
         An email has been sent to ${email}. Follow the instructions within to reset your password.
@@ -17,7 +20,7 @@
                 <label for="email">Enter your email</label>
                 <input class="form-control" id="email" type="text" name="email">
             </div>
-            <button type="submit" class="btn btn-primary">Send</button>
+            <button type="submit" class="btn btn-sm btn-primary px-3" id="send-mail">Send</button>
         </form>
     </c:otherwise>
 </c:choose>
