@@ -51,6 +51,8 @@
                         <div class="form-check d-inline float-right">
                             <input type="checkbox" class="form-check-input" id="${client.getId()}" name="users" value="${client.getId()}">
                         </div>
+                        <div class="d-inline float-right mr-5 text-danger"><c:if test="${not client.isActive()}">Inactive</c:if></div>
+                        <div class="d-inline float-right mr-5 text-success"><c:if test="${client.isAdmin()}">Admin</c:if></div>
                     </div>
                     <div class="list-subtitle">
                         ${client.getEmail()}
