@@ -3,8 +3,10 @@ Feature('First Test')
 
 const firstname = 'john'
 const lastname = 'doe'
-const email = 'john9@doe.com'
+const email = 'john13@doe.com'
 const password = '1234567'
+const newPassword = '12345678'
+const newPassword2 = '123456789'
 const appName = `${email}-app`
 
 Scenario('Register', (I, registerPage) => {
@@ -29,10 +31,12 @@ Scenario('Search app, delete app and search again', (I, loginPage, searchPage, a
 
 Scenario('Reset account password', (I, loginPage, profilePage) => {
   loginPage.loginUser(email, password)
-
+  profilePage.changePassword(newPassword)
+  loginPage.loginUser(email, newPassword)
+  loginPage.logoutUser()
 })
 
 Scenario('Forgot password', (I, loginPage, profilePage) => {
-  loginPage.forgotPassword(email, password)
-  loginPage.loginUser(email, password)
+  loginPage.forgotPassword(email, newPassword2)
+  loginPage.loginUser(email, newPassword2)
 })

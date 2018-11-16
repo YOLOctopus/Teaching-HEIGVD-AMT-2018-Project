@@ -14,12 +14,16 @@ module.exports = {
   },
   fields: {
     email: '#email',
-    password: '#pwd'
+    password: '#pwd',
+    newPassword: '#newPassword',
+    passwordRepeat: '#passwordRepeat',
   },
   action: {
     login: '#login-btn',
     forgotPassword: '#forgot-password-link',
-    sendMail: '#send-mail'
+    sendMail: '#send-mail',
+    redirect: '#redirect',
+    submit: '#submit-btn',
   },
 
   // introducing methods
@@ -39,13 +43,23 @@ module.exports = {
     this.loginUser(email, password)
     I.seeElement(this.header.users)
   },
-  forgotPassword(email, password) {
+  logoutUser() {
+    I.click(this.header.logout)
+  },
+  forgotPassword(email, newPassword) {
     I.see('Welcome to the gamification API', 'h1')
     I.click(this.header.login)
     I.see('Login', 'h1')
     I.click(this.action.forgotPassword)
     I.fillField(this.fields.email, email)
     I.click(this.action.sendMail)
-    
+    I.see('An email has been sent to')
+    I.amOnPage(`http://localhost:8080/gamification/pages/testforgot?email=${email}`)
+    I.click(this.action.redirect)
+    I.see('Reset Password', 'h1')
+    I.fillField(this.fields.newPassword, newPassword)
+    I.fillField(this.fields.passwordRepeat, newPassword)
+    I.click(this.action.submit)
+    I.see('Password successfully reseted.')
   }
 }

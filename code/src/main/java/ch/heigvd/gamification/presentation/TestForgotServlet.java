@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "TestResetServlet")
-public class TestResetServlet extends HttpServlet {
+@WebServlet(name = "TestForgotServlet")
+public class TestForgotServlet extends HttpServlet {
 
     @EJB
     UserTokenManagerLocal userTokenManager;
@@ -30,6 +30,6 @@ public class TestResetServlet extends HttpServlet {
         User user = usersManager.findByEmail(email);
         String userToken = userTokenManager.findByUser(user).getToken();
         request.setAttribute("token", userToken);
-        request.getRequestDispatcher("/WEB-INF/pages/testreset.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/testforgot.jsp").forward(request, response);
     }
 }

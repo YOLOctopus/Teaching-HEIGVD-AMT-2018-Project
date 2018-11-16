@@ -12,17 +12,23 @@ module.exports = {
     apps: '#nav-apps',
     profile: '#nav-profile',
   },
-  action: {
-    deleteAccount: '#resetpwd-btn',
-    redirect: '#redirect',
+  fields: {
+    newPassword: '#newPassword',
+    passwordRepeat: '#passwordRepeat',
   },
-  resetPassword() {
+  action: {
+    resetPwd: '#resetpwd-btn',
+    submit: '#submit-btn',
+  },
+  changePassword(newPassword) {
     I.click(this.header.profile)
-    I.see(this.action.deleteAccount)
-    I.click(this.action.deleteAccount)
-    I.see('An email has been sent to')
-    I.amOnPage(`http://localhost:8080/gamification/pages/testreset?email=${email}`)
-    I.click(this.action.redirect)
-    I.see('You have successfully activated your account. You can now log in.')
+    I.seeElement(this.action.resetPwd)
+    I.click(this.action.resetPwd)
+    I.see('Reset Password', 'h1')
+    I.fillField(this.fields.newPassword, newPassword)
+    I.fillField(this.fields.passwordRepeat, newPassword)
+    I.click(this.action.submit)
+    I.see('Password successfully reseted.')
+    I.click(this.header.logout)
   }
 }
