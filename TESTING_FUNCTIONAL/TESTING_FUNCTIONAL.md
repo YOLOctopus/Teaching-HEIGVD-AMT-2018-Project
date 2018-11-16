@@ -6,7 +6,7 @@ git checkout gamification-test-functional
 ```
 
 ## Description
-The test scenario runs as follows:   
+The test scenario runs as follows:
 - Developer creates an account
 - Developer logs in
 - Developer creates 25 applications
@@ -23,7 +23,7 @@ The test scenario runs as follows:
 - Developer logs out
 
 ## Executing the tests
-To execute the tests, start the paraya server in your favorite IDE. Then: 
+To execute the tests, start the paraya server in your favorite IDE. Then:
 ```sh
 # Start db
 cd topology-dev/
@@ -41,6 +41,3 @@ npm install
 # Open a new terminal
 npm run test
 ```
-
-## Introducing a bug
-

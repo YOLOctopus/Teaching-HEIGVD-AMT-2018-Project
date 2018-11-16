@@ -47,8 +47,8 @@ module.exports = {
     I.click(this.header.logout)
   },
   redirectAccessApps() {
-    I.click(this.header.apps)
-    I.see('Welcome to the gamification API', 'h1')
+    I.amOnPage('http://localhost:8080/gamification/pages/applications?user=1')
+    I.see('Login', 'h1')
   },
   forgotPassword(email, newPassword) {
     I.see('Welcome to the gamification API', 'h1')
