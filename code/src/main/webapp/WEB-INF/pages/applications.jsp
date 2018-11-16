@@ -84,7 +84,7 @@
             </c:forEach>
             <c:choose>
                 <c:when test="${page < maxPage+1}">
-                    <li class="page-item"><a class="page-link" href="pages/applications?user=${idUser}&page=${page+1}&pagesize=${pageSize}">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="pages/applications?user=${idUser}&page=${page+1}&pagesize=${pageSize}" id="next">Next</a></li>
                 </c:when>
                 <c:otherwise>
                     <li class="page-item disabled"><a class="page-link" href="applications/users?user=${idUser}&page=${page+1}&pagesize=${pageSize}">Next</a></li>

@@ -23,7 +23,7 @@
     </head>
     <body>
         <div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
                 <a class="navbar-brand" href="#">
                     <img src="static/images/gamification.png" height="40" class="d-inline mr-1" alt="">
                     <div class="d-inline" height="40">Gamification API</div>
