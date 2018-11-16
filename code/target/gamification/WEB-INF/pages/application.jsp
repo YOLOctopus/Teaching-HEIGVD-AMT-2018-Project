@@ -13,6 +13,9 @@
     </div>
 </c:if>
 
+<h1>Application</h1>
+<hr/>
+
 <form action="pages/application" method="post">
     <div class="form-group">
         <label for="appname">Application name</label>
